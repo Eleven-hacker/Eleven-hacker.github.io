@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
   
-  <meta name="robots" content="noindex,follow">
+  
   <meta name="generator" content="Hexo 7.3.0">
   <meta http-equiv='x-dns-prefetch-control' content='on' />
   
@@ -17,14 +17,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>Archives - 我的博客</title>
+  <title>Mysql学习笔记（2） - 我的博客</title>
 
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="Archives">
-<meta property="og:url" content="http://example.com/archives/2025/12/">
+    <meta name="description" content="where：数据库中常用的是where关键字，用于在初始表中筛选查询。它是一个约束声明，用于约束数据，在返回结果集之前起作用。 **group by:**对select查询出来的结果集按照某个字段或者表达式进行分组，获得一组组的集合，然后从每组中取出一个指定字段或者表达式的值。 having：用于对where和group by查询出来的分组经行过滤，查出满足条件的分组结果。它是一个过滤声明，是在查">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Mysql学习笔记（2）">
+<meta property="og:url" content="http://example.com/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/">
 <meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="where：数据库中常用的是where关键字，用于在初始表中筛选查询。它是一个约束声明，用于约束数据，在返回结果集之前起作用。 **group by:**对select查询出来的结果集按照某个字段或者表达式进行分组，获得一组组的集合，然后从每组中取出一个指定字段或者表达式的值。 having：用于对where和group by查询出来的分组经行过滤，查出满足条件的分组结果。它是一个过滤声明，是在查">
 <meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2025-12-21T14:32:19.000Z">
+<meta property="article:modified_time" content="2026-03-19T13:10:20.475Z">
 <meta property="article:author" content="Eleven-hacker">
 <meta name="twitter:card" content="summary">
   
@@ -42,12 +46,12 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"Website","@id":"http://example.com","author":{"@type":"Person","name":"Eleven-hacker","sameAs":[]},"name":"我的博客","description":"","url":"http://example.com"}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Eleven-hacker","sameAs":[]},"dateCreated":"2025-12-21T22:32:19+08:00","dateModified":"2026-03-19T21:10:20+08:00","datePublished":"2025-12-21T22:32:19+08:00","description":"","headline":"Mysql学习笔记（2）","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/"},"publisher":{"@type":"Organization","name":"Eleven-hacker","sameAs":[]},"url":"http://example.com/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/","image":[]}</script>
   
 </head>
 <body>
 
-<div class="l_body index" id="start" layout="undefined" type="undefined" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
 
 
 <header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">我的博客</div><div class="sub cap">欢迎大家</div></a></div></header>
@@ -59,21 +63,203 @@
 <div class="widgets">
 <div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
 
+
+
 <widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/03/20/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="title">php反序列化</span></a><a class="item title" href="/2026/03/20/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><span class="title">php命令执行</span></a><a class="item title" href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/"><span class="title">sql注入</span></a><a class="item title" href="/2026/02/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="title">mysql学习笔记</span></a><a class="item title" href="/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/"><span class="title">Mysql学习笔记（2）</span></a><a class="item title" href="/2025/12/21/test/"><span class="title">test</span></a><a class="item title" href="/2025/12/26/PHP/"><span class="title">PHP</span></a><a class="item title" href="/2025/12/08/hello-world/"><span class="title">Hello World</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
 
-<header class="header mobile-only"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">我的博客</div><div class="sub cap">欢迎大家</div></a></div></header>
-
- 
 
 
-<div class="navbar top"><div class="navbar-blur"><div class="navbar-container"><nav class="post"><a href="/">Recent</a><a href="/tags/">Tags</a><a class="active" href="/archives/">Archives</a></nav></div></div></div><div class="post-list archives"><article class="" id="archive"><div class='archive-header h4'>2026</div><div class="archive-list"><a class='post fs14' href="/2026/03/20/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><time>03-20</time><span>php命令执行</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/"><time>03-17</time><span>sql注入</span></a></div><div class="archive-list"><a class='post fs14' href="/2026/02/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><time>02-01</time><span>mysql学习笔记</span></a></div></article><article class="" id="archive"><div class='archive-header h4'>2025</div><div class="archive-list"><a class='post fs14' href="/2025/12/26/PHP/"><time>12-26</time><span>PHP</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/"><time>12-21</time><span>Mysql学习笔记（2）</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/12/21/test/"><time>12-21</time><span>test</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/12/08/hello-world/"><time>12-08</time><span>Hello World</span></a></div><div class="archive-list"><a class='post fs14' href="/2025/03/20/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><time>03-20</time><span>php反序列化</span></a></div></article></div>
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2025-12-21T14:32:19.000Z">2025-12-21</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2026-03-19T13:10:20.475Z">2026-03-19</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>Mysql学习笔记（2）</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><p><strong>where：</strong>数据库中常用的是where关键字，用于在初始表中筛选查询。它是一个约束声明，用于约束数据，在返回结果集之前起作用。</p>
+<p>**group by:**对select查询出来的结果集按照某个字段或者表达式进行分组，获得一组组的集合，然后从每组中取出一个指定字段或者表达式的值。</p>
+<p><strong>having：</strong>用于对where和group by查询出来的分组经行过滤，查出满足条件的分组结果。它是一个过滤声明，是在查询返回结果集以后对查询结果进行的过滤操作。</p>
+<p><strong>执行顺序</strong></p>
+<p>select –&gt;where –&gt; group by–&gt; having–&gt;order by</p>
+<p>update 语句可用来修改表中的数据, 简单来说基本的使用形式为:</p>
+<p>update 表名称 set 列名称&#x3D;新值 where 更新条件;</p>
+<p>以下是在表 students 中的实例:</p>
+<p>将 id 为 5 的手机号改为默认的 <strong>-</strong> : update students settel&#x3D;default where id&#x3D;5;</p>
+<p>将所有人的年龄增加 1: update students set age&#x3D;age+1;</p>
+<p>将手机号为 13288097888 的姓名改为 “小明”, 年龄改为 19: update students setname&#x3D;”小明”, age&#x3D;19 wheretel&#x3D;”13288097888”;</p>
+<p>delete 语句用于删除表中的数据, 基本用法为:</p>
+<p>delete from 表名称 where 删除条件;</p>
+<p>以下是在表 students 中的实例:</p>
+<p>删除 id 为 3 的行: delete from students where id&#x3D;3;</p>
+<p>删除所有年龄小于 21 岁的数据: delete from students where age&lt;20;</p>
+<p>删除表中的所有数据: delete from students;</p>
+<p>在 where like 的条件查询中，SQL 提供了四种匹配方式。</p>
+<ol>
+<li>**%**：表示任意 0 个或多个字符。可匹配任意类型和长度的字符，有些情况下若是中文，请使用两个百分号（%%）表示。</li>
+<li>**_**：表示任意单个字符。匹配单个任意字符，它常用来限制表达式的字符长度语句。</li>
+<li>**[]**：表示括号内所列字符中的一个（类似正则表达式）。指定一个字符、字符串或范围，要求所匹配对象为它们中的任一个。</li>
+<li><strong>[^]</strong> ：表示不在括号所列之内的单个字符。其取值和 [] 相同，但它要求所匹配对象为指定字符以外的任一个字符。</li>
+<li>查询内容包含通配符时,由于通配符的缘故，导致我们查询特殊字符 “%”、“_”、“[” 的语句无法正常实现，而把特殊字符用 “[ ]” 括起便可正常查询。</li>
+</ol>
+<p><strong>UNION 语句</strong>：用于将不同表中相同列中查询的数据展示出来；（不包括重复数据）</p>
+<p><strong>UNION ALL 语句</strong>：用于将不同表中相同列中查询的数据展示出来；（包括重复数据）</p>
+<p>使用形式如下：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">SELECT 列名称 FROM 表名称 UNION SELECT 列名称 FROM 表名称 ORDER BY 列名称；</span><br><span class="line">SELECT 列名称 FROM 表名称 UNION ALL SELECT 列名称 FROM 表名称 ORDER BY 列名称；</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<p>MySQL 排序我们知道从 MySQL 表中使用 SQL SELECT 语句来读取：</p>
+<p><strong>MySQL 拼音排序</strong></p>
+<p>如果字符集采用的是 gbk(汉字编码字符集)，直接在查询语句后边添加 ORDER BY：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * </span><br><span class="line">FROM runoob_tbl</span><br><span class="line">ORDER BY runoob_title;</span><br></pre></td></tr></table></figure>
+
+<p>如果字符集采用的是 utf8(万国码)，需要先对字段进行转码然后排序：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SELECT * </span><br><span class="line">FROM runoob_tbl</span><br><span class="line">ORDER BY CONVERT(runoob_title using gbk);</span><br></pre></td></tr></table></figure>
+
+
+
+
+
+
+
+<h3 id="MySQL-中-COALESCE-和-IFNULL-函数的区别"><a href="#MySQL-中-COALESCE-和-IFNULL-函数的区别" class="headerlink" title="MySQL 中 COALESCE() 和 IFNULL() 函数的区别"></a>MySQL 中 COALESCE() 和 IFNULL() 函数的区别</h3><p>COALESCE() 和 IFNULL() 都是 MySQL 中用于处理 NULL 值的函数，但它们有一些重要区别：</p>
+<p><strong>参数数量</strong>：</p>
+<ul>
+<li><code>IFNULL(expr1, expr2)</code> - 只接受2个参数</li>
+<li><code>COALESCE(expr1, expr2, ..., exprN)</code> - 可以接受多个参数</li>
+</ul>
+<p><strong>功能</strong>：</p>
+<ul>
+<li><code>IFNULL()</code> - 如果第一个表达式为 NULL，则返回第二个表达式</li>
+<li><code>COALESCE()</code> - 返回参数列表中第一个非 NULL 的值</li>
+</ul>
+<p><strong>标准兼容性</strong>：</p>
+<ul>
+<li><code>COALESCE()</code> 是 SQL 标准函数，大多数数据库都支持</li>
+<li><code>IFNULL()</code> 是 MySQL 特有的函数</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-- IFNULL() 示例</span><br><span class="line">SELECT IFNULL(NULL, &#x27;default&#x27;);  -- 返回 &#x27;default&#x27;</span><br><span class="line">SELECT IFNULL(&#x27;value&#x27;, &#x27;default&#x27;);  -- 返回 &#x27;value&#x27;</span><br><span class="line"></span><br><span class="line">-- COALESCE() 示例</span><br><span class="line">SELECT COALESCE(NULL, NULL, &#x27;default&#x27;);  -- 返回 &#x27;default&#x27;</span><br><span class="line">SELECT COALESCE(NULL, &#x27;value1&#x27;, &#x27;value2&#x27;);  -- 返回 &#x27;value1&#x27;</span><br><span class="line">SELECT COALESCE(&#x27;first&#x27;, &#x27;second&#x27;);  -- 返回 &#x27;first&#x27;</span><br></pre></td></tr></table></figure>
+
+<p><strong>何时使用哪个</strong></p>
+<ul>
+<li>当只需要检查一个表达式是否为 NULL 并提供替代值时，两者都可以使用</li>
+<li>当需要检查多个表达式并返回第一个非 NULL 值时，必须使用 COALESCE()</li>
+<li>如果需要代码在不同数据库间可移植，优先使用 COALESCE()</li>
+</ul>
+<p>savepoint 是在数据库事务处理中实现“子事务”（subtransaction），也称为嵌套事务的方法。事务可以回滚到 savepoint 而不影响 savepoint 创建前的变化, 不需要放弃整个事务。</p>
+<p>ROLLBACK 回滚的用法可以设置保留点 SAVEPOINT，执行多条操作时，回滚到想要的那条语句之前。</p>
+<p>使用 SAVEPOINT</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">SAVEPOINT savepoint_name;    // 声明一个 savepoint</span><br><span class="line"></span><br><span class="line">ROLLBACK TO savepoint_name;  // 回滚到savepoint</span><br></pre></td></tr></table></figure>
+
+<p>删除 SAVEPOINT</p>
+<p>保留点再事务处理完成（执行一条 ROLLBACK 或 COMMIT）后自动释放。</p>
+<p>MySQL5 以来，可以用:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">RELEASE SAVEPOINT savepoint_name;  // 删除指定保留点</span><br></pre></td></tr></table></figure>
+
+<p>alter其他用途：</p>
+<p>修改存储引擎：修改为myisam</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tableName engine=myisam;</span><br></pre></td></tr></table></figure>
+
+<p>删除外键约束：keyName是外键别名</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tableName drop foreign key keyName;</span><br></pre></td></tr></table></figure>
+
+<p>修改字段的相对位置：这里name1为想要修改的字段，type1为该字段原来类型，first和after二选一，这应该显而易见，first放在第一位，after放在name2字段后面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">alter table tableName modify name1 type1 first|after name2;</span><br></pre></td></tr></table></figure>
+
+<p>用查询直接创建临时表的方式：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">CREATE TEMPORARY TABLE 临时表名 AS</span><br><span class="line">(</span><br><span class="line">    SELECT *  FROM 旧的表名</span><br><span class="line">    LIMIT 0,10000</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">CREATE TABLE newadmin</span><br><span class="line">(</span><br><span class="line">    id INTEGER NOT NULL AUTO_INCREMENT PRIMARY KEY</span><br><span class="line">)</span><br><span class="line">AS</span><br><span class="line">(</span><br><span class="line">    SELECT * FROM admin</span><br><span class="line">)  </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>使用函数创建自增序列管理表(批量使用自增表,设置初始值,自增幅度)</p>
+<p>第一步：创建Sequence管理表 sequence</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">DROP TABLE IF EXISTS sequence; </span><br><span class="line">CREATE TABLE sequence ( </span><br><span class="line">name VARCHAR(50) NOT NULL, </span><br><span class="line">current_value INT NOT NULL, </span><br><span class="line">increment INT NOT NULL DEFAULT 1, </span><br><span class="line">PRIMARY KEY (name) </span><br><span class="line">) ENGINE=InnoDB;</span><br></pre></td></tr></table></figure>
+
+<p>第二步：创建取当前值的函数 currval</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION IF EXISTS currval; </span><br><span class="line">DELIMITER $ </span><br><span class="line">CREATE FUNCTION currval (seq_name VARCHAR(50)) </span><br><span class="line">RETURNS INTEGER</span><br><span class="line">LANGUAGE SQL </span><br><span class="line">DETERMINISTIC </span><br><span class="line">CONTAINS SQL </span><br><span class="line">SQL SECURITY DEFINER </span><br><span class="line">COMMENT &#x27;&#x27;</span><br><span class="line">BEGIN</span><br><span class="line">DECLARE value INTEGER; </span><br><span class="line">SET value = 0; </span><br><span class="line">SELECT current_value INTO value </span><br><span class="line">FROM sequence</span><br><span class="line">WHERE name = seq_name; </span><br><span class="line">RETURN value; </span><br><span class="line">END</span><br><span class="line">$ </span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<p>第三步：创建取下一个值的函数 nextval</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION IF EXISTS nextval; </span><br><span class="line">DELIMITER $ </span><br><span class="line">CREATE FUNCTION nextval (seq_name VARCHAR(50)) </span><br><span class="line">RETURNS INTEGER</span><br><span class="line">LANGUAGE SQL </span><br><span class="line">DETERMINISTIC </span><br><span class="line">CONTAINS SQL </span><br><span class="line">SQL SECURITY DEFINER </span><br><span class="line">COMMENT &#x27;&#x27;</span><br><span class="line">BEGIN</span><br><span class="line">UPDATE sequence</span><br><span class="line">SET current_value = current_value + increment </span><br><span class="line">WHERE name = seq_name; </span><br><span class="line">RETURN currval(seq_name); </span><br><span class="line">END</span><br><span class="line">$ </span><br><span class="line">DELIMITER;</span><br></pre></td></tr></table></figure>
+
+<p>第四步：创建更新当前值的函数 setval</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">DROP FUNCTION IF EXISTS setval; </span><br><span class="line">DELIMITER $ </span><br><span class="line">CREATE FUNCTION setval (seq_name VARCHAR(50), value INTEGER) </span><br><span class="line">RETURNS INTEGER</span><br><span class="line">LANGUAGE SQL </span><br><span class="line">DETERMINISTIC </span><br><span class="line">CONTAINS SQL </span><br><span class="line">SQL SECURITY DEFINER </span><br><span class="line">COMMENT &#x27;&#x27;</span><br><span class="line">BEGIN</span><br><span class="line">UPDATE sequence</span><br><span class="line">SET current_value = value </span><br><span class="line">WHERE name = seq_name; </span><br><span class="line">RETURN currval(seq_name); </span><br><span class="line">END</span><br><span class="line">$ </span><br><span class="line">DELIMITER ;</span><br></pre></td></tr></table></figure>
+
+<p><strong>测试函数功能</strong></p>
+<p>当上述四步完成后，可以用以下数据设置需要创建的sequence名称以及设置初始值和获取当前值和下一个值。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">INSERT INTO sequence VALUES (&#x27;TestSeq&#x27;, 0, 1);</span><br><span class="line">----添加一个sequence名称和初始值，以及自增幅度  添加一个名为TestSeq 的自增序列</span><br><span class="line"></span><br><span class="line">SELECT SETVAL(&#x27;TestSeq&#x27;, 10);</span><br><span class="line">---设置指定sequence的初始值    这里设置TestSeq 的初始值为10</span><br><span class="line"></span><br><span class="line">SELECT CURRVAL(&#x27;TestSeq&#x27;);  </span><br><span class="line">--查询指定sequence的当前值   这里是获取TestSeq当前值</span><br><span class="line"></span><br><span class="line">SELECT NEXTVAL(&#x27;TestSeq&#x27;);  </span><br><span class="line">--查询指定sequence的下一个值  这里是获取TestSeq下一个值</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">select 列名1，count（1） as count </span><br><span class="line">from 表名</span><br><span class="line">group by  列名1</span><br><span class="line">having count&gt;1  and 其他条件</span><br><span class="line"></span><br><span class="line">select 列名1，列名2，count（1） as count </span><br><span class="line">from 表名</span><br><span class="line">group by  列名1，列名2 </span><br><span class="line">having count&gt;1  and 其他条件</span><br></pre></td></tr></table></figure>
+
+<p>原理：先按照要查询出现重复数据的列，进行分组查询。count &gt; 1 代表出现 2 次或 2 次以上。</p>
+<p>示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">/*查询重复数据*/</span><br><span class="line">select serialnum,cdate,count(*) as count </span><br><span class="line">from m_8_customer_temp_20180820bak </span><br><span class="line">group by serialnum,cdate having  count&gt;1 and cdate&gt;=&#x27;2018-08-20 00:00:00&#x27;;</span><br></pre></td></tr></table></figure>
+
+<h1 id="MySQL-及-SQL-注入"><a href="#MySQL-及-SQL-注入" class="headerlink" title="MySQL 及 SQL 注入"></a>MySQL 及 SQL 注入</h1><p>如果您通过网页获取用户输入的数据并将其插入一个 MySQL 数据库，那么就有可能发生 SQL 注入安全的问题。</p>
+<p>所谓 SQL 注入，就是通过把 SQL 命令插入到 Web 表单递交或输入域名或页面请求的查询字符串，最终达到欺骗服务器执行恶意的 SQL 命令。</p>
+<p>MySQL 注入是指攻击者通过恶意构造的输入，成功地执行恶意的 SQL 查询，这通常发生在用户输入未经适当验证或转义的情况下，攻击者试图在输入中插入 SQL 代码，以执行意外的查询或破坏数据库。</p>
+<p>我们永远不要信任用户的输入，我们必须认定用户输入的数据都是不安全的，我们都需要对用户输入的数据进行过滤处理。</p>
+<p>假设有一个登录系统，用户通过输入用户名和密码进行身份验证：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username = &#x27;input_username&#x27; AND password = &#x27;input_password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>如果没有正确的输入验证和防范措施，攻击者可以输入类似于以下内容的用户名：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#x27; OR &#x27;1&#x27;=&#x27;1&#x27;; --</span><br></pre></td></tr></table></figure>
+
+<p>在这种情况下，SQL 查询会变成：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">SELECT * FROM users WHERE username = &#x27;&#x27; OR &#x27;1&#x27;=&#x27;1&#x27;; --&#x27; AND password = &#x27;input_password&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>这会使查询返回所有用户，因为 <strong>1&#x3D;1</strong> 总是为真，注释符号 – 用于注释掉原始查询的其余部分，以确保语法正确。</p>
+<p><strong>防范 SQL 注入：</strong></p>
+<ul>
+<li><strong>使用参数化查询或预编译语句：</strong> 使用参数化查询（Prepared Statements）可以有效防止 SQL 注入，因为它们在执行查询之前将输入数据与查询语句分离。</li>
+<li><strong>输入验证和转义：</strong> 对用户输入进行适当的验证，并使用合适的转义函数（如<code>mysqli_real_escape_string</code>）来处理输入，以防止恶意注入。</li>
+<li><strong>最小权限原则：</strong> 给予数据库用户最小的权限，确保它们只能执行必要的操作，以降低潜在的损害。</li>
+<li><strong>使用ORM框架：</strong> 使用对象关系映射（ORM）框架（如Hibernate、Sequelize）可以帮助抽象 SQL 查询，从而降低 SQL 注入的风险。</li>
+<li><strong>禁用错误消息显示：</strong> 在生产环境中，禁用显示详细的错误消息，以防止攻击者获取有关数据库结构的敏感信息。</li>
+</ul>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2025/12/26/PHP/">PHP</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2025/12/21/test/">test</a></div></section></div>
+
+
+
+
+
+
 <footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Eleven-hacker</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
 </div></footer>
 <div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
-</aside><div class='float-panel'>
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#MySQL-%E4%B8%AD-COALESCE-%E5%92%8C-IFNULL-%E5%87%BD%E6%95%B0%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-text">MySQL 中 COALESCE() 和 IFNULL() 函数的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#MySQL-%E5%8F%8A-SQL-%E6%B3%A8%E5%85%A5"><span class="toc-text">MySQL 及 SQL 注入</span></a></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
   </button>
